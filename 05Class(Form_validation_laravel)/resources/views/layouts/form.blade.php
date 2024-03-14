@@ -17,17 +17,24 @@
             print_r($errors->all());
         @endphp
         </pre>-->
-        <div class="container">
-            <h1 class="text-center">Registration</h1>
+        @php
+            $demo = 1;
+        @endphp
+        <div class="container mb-2">
+              <x-input type="text" name="name" label="Please enter your name" :demo="$demo" />
+              <x-input type="email" name="email" label="Please enter your email"  />
+              <x-input type="password" name="password" label="Password"/>
+              <x-input type="password" name="password_confir" label="Confirm Password" />
+              <!-- <h1 class="text-center">Registration</h1>
             <div class="form-group">
               <label for="">Name</label>
               <input type="text" name="name" id="" class="form-control" value ="{{old('name')}}" />
               <span class="text-danger">
-                    @error('name')
+                   {{-- @error('name')
                             {{$message}}
-                    @enderror
-              </span>
-            </div>
+                    @enderror--}}
+              </span>-->
+            <!--</div>
             <div class="form-group">
               <label for="">Email</label>
               <input type="email" name="email" id="" class="form-control" value ="{{old('email')}}"  />
@@ -54,11 +61,9 @@
                             {{$message}}
                     @enderror
               </span>
-            </div>
-            <button class="btn btn-primary">
-                Submit
-            </button>
+            </div>-->
+            <button class="btn btn-primary">Submit</button>
         </div>
-</form>
+    </form>
 </body>
 </html>

@@ -28,10 +28,12 @@ Route::get('/register', [RegistrationController::class,'index']);
 
 Route::post('/register', [RegistrationController::class,'register']);
 
+Route::get('/customer/view',[CustomerController::class ,'view']);
 
-Route::get('/customer', [RegistrationController::class,'index']);
+Route::get('/customer/create', [CustomerController::class,'create']);
 
 Route::post('/customer', [CustomerController::class,'store']);
 
 
 
+Route::get('/customer', [CustomerController::class, 'index']);

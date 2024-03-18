@@ -63,15 +63,23 @@
                         <td>{{$customer->country}}</td>
                         <td>
                           @if($customer->status == "1")
-                          Active
-                          @else
-                          Inactive
-                          @endif
-                        </td>
+                          <a href="">
+                                <span class="badge badge-success">Active</span>
+                          </a>
+                          @else 
+                          <a href="">
+                                <span class="badge badge-success">Inactive</span>
+                          </a>
+                          @endif    
+                          <td>
+                            <!--<a href="{{--{{url('/customer/delete/')}}/{{$customer->customer_id}}--}}"><button class="btn btn-danger">Delete</button></a>-->
+                            <a href="{{route('customer.delete', ['id' =>$customer->customer_id])}}"><button class="btn btn-danger">Delete</button></a>
+                            <button class="btn btn-primary">Edit</button>
+                         </td>
                     </tr>
-                    @endforeach
-                </tbody>
-            </table>
-      </div>
-  </body>
-</html>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>                            

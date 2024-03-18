@@ -18,6 +18,7 @@ class CustomerController extends Controller
     {
         return view('layouts.customer');
     }
+    
 
     public function store(Request $request)
     {
@@ -54,5 +55,15 @@ class CustomerController extends Controller
         // $data = ;
         return view('customer-view', compact('customers'));
 
+    }
+    public function delete($id)
+    {
+        $customer =Customer::find($id);
+
+            if (!is_null($customer)){
+                $customer->delete();
+            }
+        return redirect('customer');
+       
     }
 }

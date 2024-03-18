@@ -13,7 +13,7 @@
     <div class="container-fluid bg-dark">
         <div class="container">
             <nav class="navbar navbar-expand-sm">
-                <a class="navbar-brand" href="#" style="color: white">FinTech</a>
+                <a class="navbar-brand" href="{{'/'}}" style="color: white">FinTech</a>
                 <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -33,45 +33,22 @@
             </nav>
         </div>
     </div>    
-      <div class="container">
-            <a href="{{route('customer-create')}}">
-                <button class="btn btn-primary d-inline-block m-2 float-right"> Add </button>
-            </a>
-            <table class="table">
-                <!--<pre>
-                    {{--{{print_r($customers)}}--}}
-                </pre>-->
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Gender</th>
-                        <th>DOB</th>
-                        <th>State</th>
-                        <th>Country</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($customers as $customer)
-                    <tr>
-                        <td>{{$customer->name}}</td>
-                        <td>{{$customer->email}}</td>
-                        <td>{{$customer->gender}}</td>
-                        <td>{{$customer->dob}}</td>
-                        <td>{{$customer->state}}</td>
-                        <td>{{$customer->country}}</td>
-                        <td>
-                          @if($customer->status == "1")
-                          Active
-                          @else
-                          Inactive
-                          @endif
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
-      </div>
-  </body>
-</html>
+    <form action="{{url('/')}}/register" method="post">
+            @csrf
+            {{--@php
+                print_r($errors->all());
+            @endphp--}}
+            @php
+            $demo = 1;
+            @endphp
+            <div class="container">
+                <x-input type="text" name="name" label="Please enter your name" :demo="$demo" />
+                <x-input type="email" name="email" label="Please enter your email"  />
+                <x-input type="password" name="password" label="Password"/>
+                <x-input type="password" name="password_confir" label="Confirm Password" />
+            </div>
+            <button class="btn btn-primary">Register</button>
+        </div>
+    </form> 
+</body>
+</html>    

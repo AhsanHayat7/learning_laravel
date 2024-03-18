@@ -10,11 +10,9 @@ class CustomerController extends Controller
 
     public function create()
     {
-        return view('customer.create');
+        return view('customer-create');
     }
-
-
-
+    
 
     public function index()
     {
@@ -40,7 +38,7 @@ class CustomerController extends Controller
         $customer->password = md5($request['password']);
         $customer->save();
 
-        return redirect('/customer/view');
+        return redirect()->route('customer-view');
     
 
 
@@ -48,14 +46,13 @@ class CustomerController extends Controller
     }
     public function view() 
     {   
-
         $customers = Customer::all();
-        //echo "<pre>";
-        //print_r($customers);
-        //echo "<pre>";
-        //die;
-        $data = compact('customers');
-        return view('customer-view')->with($data);
+        // //echo "<pre>";
+        // //print_r($customers);
+        // //echo "<pre>";
+        // //die;
+        // $data = ;
+        return view('customer-view', compact('customers'));
 
     }
 }

@@ -3,7 +3,6 @@
 use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegistrationController;
-use App\Models\Customer;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,24 +15,13 @@ use App\Models\Customer;
 |
 */
 
-//Route::get('/customers', function(){
-//    $customers = Customers::all();
-//    echo "<pre>";
-//    print_r($customers->toArray());
-
-
-
+Route::get('/', function () {
+    return view('index');
+});
 
 Route::get('/register', [RegistrationController::class,'index']);
-
 Route::post('/register', [RegistrationController::class,'register']);
 
-Route::get('/customer/view',[CustomerController::class ,'view']);
-
-Route::get('/customer/create', [CustomerController::class,'create']);
-
-Route::post('/customer', [CustomerController::class,'store']);
-
-
-
-Route::get('/customer', [CustomerController::class, 'index']);
+Route::get('/customer',[CustomerController::class ,'view'])->name('customer-view');
+Route::get('/customer/create', [CustomerController::class,'create'])->name('customer-create');
+Route::post('/customer', [CustomerController::class,'store'])->name('customer.store');

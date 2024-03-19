@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-  <head>
+  <head>--
     <title>Register</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -39,10 +39,10 @@
             </nav>
         </div>
     </div>    
-    <form action="{{url('/')}}/customer" method="post">
+    <form action="{{ $url ?? route('customer-create') }}" method="post">
         @csrf
         <div class="container mt-4 card p-3 bg-white">
-            <h3 class="text-center text-primary">Customer Registration</h3>
+            <h3 class="text-center text-primary">{{ $title ?? 'Customer Registration' }}</h3>
             <div class="row">
                 <div class="form-group col-md-6 required">
                 <label for="">Name:</label>

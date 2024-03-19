@@ -47,9 +47,11 @@
                         <th>Email</th>
                         <th>Gender</th>
                         <th>DOB</th>
+                        <th>Address</th>
                         <th>State</th>
                         <th>Country</th>
                         <th>Status</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -57,6 +59,7 @@
                     <tr>
                         <td>{{$customer->name}}</td>
                         <td>{{$customer->email}}</td>
+                        <td>{{$customer->address}}</td>
                         <td>{{$customer->gender}}</td>
                         <td>{{$customer->dob}}</td>
                         <td>{{$customer->state}}</td>
@@ -74,7 +77,7 @@
                           <td>
                             <!--<a href="{{--{{url('/customer/delete/')}}/{{$customer->customer_id}}--}}"><button class="btn btn-danger">Delete</button></a>-->
                             <a href="{{route('customer.delete', ['id' =>$customer->customer_id])}}"><button class="btn btn-danger">Delete</button></a>
-                            <button class="btn btn-primary">Edit</button>
+                            <a href="{{route('customer.edit',['id' =>$customer->customer_id])}}"><button class="btn btn-primary">Edit</button></a>
                          </td>
                     </tr>
                 @endforeach

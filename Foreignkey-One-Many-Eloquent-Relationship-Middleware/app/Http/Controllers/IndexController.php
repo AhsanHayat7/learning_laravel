@@ -16,7 +16,7 @@ class IndexController extends Controller
        // return Member::find(1)->getGroup; to get the data with the help of the function getGroup and when you use find you have to mention the primary key in the member.php
     //return Member::with('getGroup')->get();to get the all the data with group and member both
         
-        return Member::with('group')->get();
+        return "<pre>" . Member::with('group')->get() . "<pre>";
     }
 
     public function group()

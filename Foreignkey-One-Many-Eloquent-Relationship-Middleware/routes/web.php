@@ -17,8 +17,14 @@ use Illuminate\Support\Facades\App;
 */
 
 //Protected
-Route::get('/data', [IndexController::class, 'index'])->middleware('guard');
-Route::get('/group', [IndexController::class, 'group'])->middleware('guard');
+//Route::get('/data', [IndexController::class, 'index'])->middleware('guard');
+//Route::get('/group', [IndexController::class, 'group'])->middleware('guard');
+Route::middleware(['guard','web'])->group(function(){
+    // Protected
+    Route::get('/data', [IndexController::class, 'index']);
+    Route::get('/group', [IndexController::class, 'group']);
+
+});
 //-----------------
 Route::get('/profile',function(){
     return "Welcome to your profile";
@@ -28,7 +34,7 @@ Route::get('/login', function(){
     return redirect('/'); //redirect to main page
 });
 Route::get('/logout', function(){
-    session()->forget('user_id', 1);
+    session()->forget('user_id');
     return redirect('/'); //redirect to main page
 });
 Route::get('/no-access', function(){
@@ -37,5 +43,6 @@ Route::get('/no-access', function(){
 });    
 Route::get('/{lang?}', function ($lang = null) {
     App::setlocale($lang);
-    return view('welcome');
+    $user_id = session('user_id');
+    return view('welcome', ['user_id'=> $user_id]);
 });

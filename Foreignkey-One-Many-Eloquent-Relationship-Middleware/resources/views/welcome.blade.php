@@ -27,6 +27,11 @@
     <div class="welcome-message">
         <h1>Welcome to the Page</h1>
         <p>This is your custom welcome message.</p>
+        @if($user_id)
+            <p>User ID: {{ $user_id }}</p>
+        @else
+            <p>User not logged in</p>
+        @endif
     </div>
 </body>
 </html>

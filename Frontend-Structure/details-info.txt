@@ -1,0 +1,42 @@
+                                            Structure of frontend on laravel framework with PHP.(laravelPHP)
+
+
+
+.First we are creating folder of frontend in laravel in rescoures->view->(frontend folder) than  we move the index.blade.php and other remaining  blade files of website to the frontend folder.
+.Second we are creating folder of frontend in laravel in public folder  than  we move the remaining assest or form folders of website containing css files and js files images to the frontend folder.
+.Third we create the layouts folder in frontend and do the following steps.
+
+1. Make app.blade.php in the frontend-> in layouts folder->paste the wanted codes in the app file from index.blade.php.
+2. Make the scripts.blade.php in the frontend-> in layouts folder-> paste the codes of js code from index.blade.php.
+3. Make the style.blade.php in the frontend-> in layouts folder-> paste the codes of css code from index.blade.php.
+4. Make the header.blade.php in the frontend-> in layouts folder-> paste the codes of header that is same for whole website code from index.blade.php.
+5. Make the footer.blade.php in the frontend-> in layouts folder-> paste the codes of footer  that is same for whole website code from index.blade.php.
+6. Make the main.blade.php in the frontend-> in layouts folder-> include the header and footer and yield the main container to connect wih the header and footer to the remaining pages.
+
+Controllers:
+
+1. Make the Controllers according to the webpages in the site like home page,about,contact,services,portfolio.
+2. Make the functions in the controller according to the routes in the define in web.php.
+3. In the controller function Return the view with the name of the folders define in the rescoures->view->frontend->(e.g-home.balde.php) to this->(frontend.home)-> to connect with the pages defines in the frontend folder.
+
+
+Routes:
+
+1. Include the controlers in the web.php that we have made like App\Http\Controllers\frontend\HomeControllers include all controlers in the web.blade.php.
+2. Define the get routes with the required controllers to view the webpages on the localhost server.
+3. Define the get urls of home,about,contact,details and other  in the header and in the index.blade.php and in other blade files to connect to the get routes define in the web.php.
+4. Define the urls and folder directory to the footer,style,scripts and other blade files for images made on json and css files and also define the these urls in other blade.php files to get the images of the webpages.
+
+
+index.blade.php
+
+1. Now take the codes from this index file for header,footer,scripts,styles, and make main to connect the all blade files.
+2. Now remove the codes of header,footer,scripts,style from index.blade.php and also remove it from the other blade file.
+3. Now we use the main container to fit the header footer to all pages by extending the pages with @extends('frontend.layouts.app) and section like @section('main-container) and end the section @endsection.
+
+blade.php
+1. Use the blade files given by the website or make it from index.blade.php according to the define controllers like about.blade.php, contact.balde.php and others.
+
+.You can see from the index.blade.php file which code is to be selected and which code is to be removed by seeing the commented lines in the code of index.blade.php.
+.Now you can hit the php artisan serve command for localhost server and successfully get the webiste frontend on the web.
+

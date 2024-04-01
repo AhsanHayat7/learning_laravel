@@ -1,0 +1,3 @@
+@include('frontend.inner-layouts.header')
+@yield('main-container')
+@include('frontend.inner-layouts.footer')

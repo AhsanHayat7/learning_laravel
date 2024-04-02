@@ -4,9 +4,6 @@
     <title>{{$title}}</title>
 </head>
 <body>
-    <pre>
-        {{ json_encode($transformedData, JSON_PRETTY_PRINT) }}
-    </pre>
     {{--<table>
         <thead>
             <tr>

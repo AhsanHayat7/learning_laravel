@@ -2,8 +2,8 @@
 
 use App\Http\Controllers\IndexController;
 use Illuminate\Support\Facades\Route;
-use League\CommonMark\Extension\CommonMark\Node\Block\IndentedCode;
-use App\Modles\Customer;
+
+use App\Models\Customer;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,11 +14,19 @@ use App\Modles\Customer;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/data',[IndexController::class, 'index']);
+
+// Protected
+
+Route::get('/data',[IndexController::class, 'index'])->middleware('guard');
+Route::get('/group',[IndexController::class, 'group'])->middleware('guard');
+// ------------
 Route::get('/profile', function(){
     return "welcome to your profile";
 });
-Route::get('/group',[IndexController::class, 'group']);
+Route::get('/no-access',function (){
+    echo "You're not allowd to acces the page";
+    die;
+});
 Route::get('/{lang?}', function ($lang = null){
     App::setLocale($lang);
     return view('welcome');

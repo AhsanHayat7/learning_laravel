@@ -15,12 +15,10 @@ class WebGuard
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
     public function handle(Request $request, Closure $next)
-    {
-        if($request->age < 18){
-            echo "You are not allow to access the page";
-            die;
-        
-        }
+    {   
+        //if(session()->has('user_id'))
         return $next($request);
+        //else
+        //return redirect('no-access');
     }
 }

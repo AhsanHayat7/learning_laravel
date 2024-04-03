@@ -11,7 +11,6 @@ use App\Http\Controllers\frontend\BlogdetailsController;
 use App\Http\Controllers\frontend\Home2Controller;
 use App\Http\Controllers\frontend\Home3Controller;
 use App\Http\Controllers\frontend\Home4Controller;
-use App\Http\Controllers\frontend\Portfoliodetails;
 
 use Illuminate\Support\Facades\Route;
 

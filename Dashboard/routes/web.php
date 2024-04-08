@@ -13,6 +13,8 @@ use App\Http\Controllers\frontend\FAQController;
 use App\Http\Controllers\frontend\LoginController;
 use App\Http\Controllers\frontend\ProfileController;
 use App\Http\Controllers\frontend\RegisterController;
+use App\Http\Controllers\frontend\CategoriesController;
+use App\Http\Models\Customer;
 
 
 use Illuminate\Support\Facades\Route;
@@ -45,6 +47,8 @@ Route::get('/elements',[FormsController::class, 'elements']);
 Route::get('/layouts',[FormsController::class, 'layouts']);
 Route::get('/validation',[FormsController::class, 'validation']);
 
+
+
 // Icons
 Route::get('/bootstrap',[IconsController::class, 'bootstrap']);
 Route::get('/boxicons',[IconsController::class, 'boxicons']);
@@ -67,6 +71,15 @@ Route::get('/spinners',[ComponentsController::class, 'spinners']);
 Route::get('/tabs',[ComponentsController::class, 'tabs']);
 Route::get('/tooltips',[ComponentsController::class, 'tooltips']);
 
+// Categories-table from data 
 
+Route::get('/Add/All/Category',[CategoriesController::class, 'add'])->name('add');
+Route::post('/Add/All/Category',[CategoriesController::class, 'store'])->name('customer.store');
+Route::get('/all',[CategoriesController::class, 'all']);
+Route::get('/Add/Category',[CategoriesController::class, 'form'])->name('add.category');
 
+// Delete Route
 
+Route::get('/add/delete/{id}',[CategoriesController::class, 'delete'])->name('customer.delete');
+Route::get('/add/delete/{id}',[CategoriesController::class, 'delete'])->name('customer.delete');
+Route::get('/add/edit/{id}',[CategoriesController::class, 'edit'])->name('customer.edit');

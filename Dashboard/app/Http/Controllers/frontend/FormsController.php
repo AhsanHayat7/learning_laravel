@@ -32,5 +32,8 @@ class FormsController extends Controller
 
     }
 
+    public function form(){
+        return view('frontend.dashboard.form');
+    }
 
 }

@@ -14,7 +14,6 @@
   <link href="{{url('frontend/assets/vendor/quill/quill.bubble.css')}}" rel="stylesheet">
   <link href="{{url('frontend/assets/vendor/remixicon/remixicon.css')}}" rel="stylesheet">
   <link href="{{url('frontend/assets/vendor/simple-datatables/style.css')}}" rel="stylesheet">
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet"/>
   <!-- Template Main CSS File -->
   <link href="{{url('frontend/assets/css/style.css')}}" rel="stylesheet">

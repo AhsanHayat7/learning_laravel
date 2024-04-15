@@ -8,7 +8,9 @@
  <script src="{{url('frontend/assets/vendor/tinymce/tinymce.min.js')}}"></script>
  <script src="{{url('frontend/assets/vendor/php-email-form/validate.js')}}"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+ 
  <!-- Template Main JS File -->
+ 
  <script src="{{url('frontend/assets/js/main.js')}}"></script>
  <script>
     toastr.options = {

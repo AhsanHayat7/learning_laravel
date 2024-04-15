@@ -56,6 +56,12 @@ return [
             'throw' => false,
         ],
 
+        'frontend' => [
+            'driver' => 'local',
+            'root' => storage_path('app/frontend'),
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+        ],
     ],
 
     /*
@@ -74,3 +80,4 @@ return [
     ],
 
 ];
+

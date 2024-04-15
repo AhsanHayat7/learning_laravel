@@ -14,6 +14,8 @@ use App\Http\Controllers\frontend\LoginController;
 use App\Http\Controllers\frontend\ProfileController;
 use App\Http\Controllers\frontend\RegisterController;
 use App\Http\Controllers\frontend\CategoriesController;
+use App\Http\Controllers\Frontend\ProductController;
+use App\Http\Controllers\Frontend\UploadController;
 use App\Http\Models\Customer;
 
 
@@ -83,3 +85,17 @@ Route::get('/Add/Category',[CategoriesController::class, 'form'])->name('add.cat
 Route::get('/add/delete/{id}',[CategoriesController::class, 'delete'])->name('customer.delete');
 Route::get('/add/delete/{id}',[CategoriesController::class, 'delete'])->name('customer.delete');
 Route::get('/add/edit/{id}',[CategoriesController::class, 'edit'])->name('customer.edit');
+
+//product
+
+Route::get('/Add/All/Product',[ProductController::class, 'addproduct'])->name('all');
+Route::post('/Add/All/Product',[ProductController::class, 'store'])->name('product.store');
+Route::get('Add/Product', [ProductController::class, 'viewproduct'])->name('add.product');
+
+
+// upload 
+
+Route::post('/upload',[UploadController::class, 'upload']);
+Route::get('/upload', function(){
+    return view('upload');
+});

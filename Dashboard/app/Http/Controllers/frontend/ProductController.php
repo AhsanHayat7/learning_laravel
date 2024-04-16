@@ -13,9 +13,18 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function addproduct()
-    {   $products = Products::all();
-        return view('frontend.dashboard.Product.AddProduct',compact('products'));
+    public function addproduct(Request $request)
+        
+    {   
+        $search = $request['search'] ?? "";
+        if($search != ""){
+            $products = Products::where('Name', 'LIKE',  "%$search%")->paginate(5);
+        }else{
+            $products = Products::paginate(5);
+
+        }
+        #$products = $search ? Products::where('Name', 'LIKE',  "%$search%")->get() : Products::all();
+        return view('frontend.dashboard.Product.AddProduct', compact('products', 'search'));
     }
 
     /**
@@ -59,7 +68,8 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function viewproduct()
-    {
+    {   
+        
         $products = Products::all();
         return view('frontend.dashboard.Product.ViewProduct', compact('products'));
     }

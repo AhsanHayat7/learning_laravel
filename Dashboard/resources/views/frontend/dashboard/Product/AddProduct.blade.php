@@ -16,6 +16,25 @@
         </nav>
     </div><!-- End Page Title -->
 
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <form action="" method="GET">
+                    <div class="input-group">
+                        <input type="text" name="search" class="form-control" placeholder="Search by Name" value="{{$search}}">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="submit">Search</button>
+
+                            <a href="{{route('all')}}">
+                            <button class="btn btn-primary" type="button">Reset</button>
+                            </a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <section class="section">
         <div class="row">
             <div class="col-lg-12">
@@ -52,6 +71,10 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                          <div class="row">
+                            {{$products->links('pagination::bootstrap-4')}}
+
+                          </div>
                         </div>
                     </div>
                 </div>

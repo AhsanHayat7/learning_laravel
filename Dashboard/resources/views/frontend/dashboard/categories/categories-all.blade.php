@@ -2,12 +2,12 @@
 
 @section('main-container')
 
-<main id="main" class="main">  
+<main id="main" class="main">
     <div class="pagetitle">
       <h1>All Categories</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+          <li class="breadcrumb-item"><a href="{{url('/home')}}">Home</a></li>
           <li class="breadcrumb-item">Categories</li>
           <li class="breadcrumb-item active">All Categories</li>
         </ol>

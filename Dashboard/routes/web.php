@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\frontend;
+use App\Http\Controllers\frontend\AuthController;
 use App\Http\Controllers\frontend\ChartsController;
 use App\Http\Controllers\frontend\ComponentsController;
 use App\Http\Controllers\frontend\DashboardController;
@@ -17,6 +18,13 @@ use App\Http\Controllers\frontend\CategoriesController;
 use App\Http\Controllers\Frontend\ProductController;
 use App\Http\Controllers\Frontend\UploadController;
 use App\Http\Models\Customer;
+
+use App\Http\Controllers\frontend\CartController;
+use App\Http\Controllers\frontend\CheckoutController;
+use App\Http\Controllers\frontend\HomeController;
+use App\Http\Controllers\frontend\ProductDetailController;
+use App\Http\Controllers\frontend\ShopController;
+
 
 
 use Illuminate\Support\Facades\Route;
@@ -41,7 +49,6 @@ Route::get('/apexcharts',[ChartsController::class,'apexcharts']);
 Route::get('/chartjs',[ChartsController::class, 'chartjs']);
 Route::get('/echarts', [ChartsController::class, 'echarts']);
 
-Route::get('/',[DashboardController::class, 'index']);
 
 //Forms
 Route::get('/editors',[FormsController::class, 'editors']);
@@ -73,7 +80,7 @@ Route::get('/spinners',[ComponentsController::class, 'spinners']);
 Route::get('/tabs',[ComponentsController::class, 'tabs']);
 Route::get('/tooltips',[ComponentsController::class, 'tooltips']);
 
-// Categories-table from data 
+// Categories-table from data
 
 Route::get('/Add/All/Category',[CategoriesController::class, 'add'])->name('add');
 Route::post('/Add/All/Category',[CategoriesController::class, 'store'])->name('customer.store');
@@ -93,9 +100,35 @@ Route::post('/Add/All/Product',[ProductController::class, 'store'])->name('produ
 Route::get('Add/Product', [ProductController::class, 'viewproduct'])->name('add.product');
 
 
-// upload 
+// upload
 
 Route::post('/upload',[UploadController::class, 'upload']);
 Route::get('/upload', function(){
     return view('upload');
 });
+
+//boutique web
+
+Route::get('/',[HomeController::class, 'index']);
+Route::get('/cart',[CartController::class, 'cart']);
+Route::get('/checkout',[CheckoutController::class, 'checkout']);
+Route::get('/product-details',[ProductDetailController::class, 'productdetail']);
+Route::get('/shop',[ShopController::class, 'shop']);
+
+//login and register
+
+Route::group(['middleware'=>'guest'],function(){
+    Route::get('/login',[AuthController::class, 'log'])->name('login');
+    Route::post('/login',[AuthController::class, 'login'])->name('login');
+
+    Route::get('/register',[AuthController::class, 'reg'])->name('register');
+    Route::post('/register',[AuthController::class, 'register'])->name('register');
+
+});
+
+Route::group(['middleware'=>'auth'],function(){
+    Route::get('/logout',[AuthController::class, 'logout'])->name('logout');
+    Route::get('/home',[DashboardController::class, 'home']);
+});
+
+

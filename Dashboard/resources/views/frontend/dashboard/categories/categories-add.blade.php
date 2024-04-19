@@ -10,7 +10,7 @@
         <h1>Category</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{ url('/home') }}">Home</a></li>
                 <li class="breadcrumb-item active">Category</li>
             </ol>
         </nav>
@@ -48,9 +48,9 @@
                                         <td>
                                           <!-- Action buttons with colors -->
                                           <a href="{{ route('customer.delete', ['id' => $customer->Customer_id]) }}"> <button class="btn btn-danger">Delete</button></a>
-                                        
+
                                           <a href="{{route('customer.edit',['id'=>$customer->Customer_id])}}"> <button class="btn btn-primary">Edit</button>
-                                         
+
                                       </td>
                                     </tr>
                                     @endforeach

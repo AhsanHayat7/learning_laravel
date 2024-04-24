@@ -11,4 +11,15 @@ class Products extends Model
 
     protected $table = "products";
     protected $primaryKey = "Customer_id";
+
+    public function images()
+    {
+        return $this->hasMany(Images::class, 'product_id', 'Customer_id');
+    }
+
+
 }
+
+
+
+

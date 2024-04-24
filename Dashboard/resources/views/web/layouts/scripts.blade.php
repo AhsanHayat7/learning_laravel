@@ -5,4 +5,3 @@
 <script src="{{url('web/vendor/choices.js/public/assets/scripts/choices.min.js')}}"></script>
 <script src="{{url('web/js/front.js')}}"></script>
 
-

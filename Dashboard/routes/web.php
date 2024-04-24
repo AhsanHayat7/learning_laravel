@@ -24,6 +24,7 @@ use App\Http\Controllers\frontend\CheckoutController;
 use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\frontend\ProductDetailController;
 use App\Http\Controllers\frontend\ShopController;
+use App\Http\Controllers\frontend\ProductImageController;
 
 
 
@@ -112,7 +113,8 @@ Route::get('/upload', function(){
 Route::get('/',[HomeController::class, 'index']);
 Route::get('/cart',[CartController::class, 'cart']);
 Route::get('/checkout',[CheckoutController::class, 'checkout']);
-Route::get('/product-details',[ProductDetailController::class, 'productdetail']);
+Route::get('/product-details/{id}', [ProductDetailController::class, 'productdetail'])->name('product-details');
+
 Route::get('/shop',[ShopController::class, 'shop']);
 
 //login and register
@@ -130,5 +132,4 @@ Route::group(['middleware'=>'auth'],function(){
     Route::get('/logout',[AuthController::class, 'logout'])->name('logout');
     Route::get('/home',[DashboardController::class, 'home']);
 });
-
 

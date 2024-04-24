@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Products;
+use App\Models\Images;
 
 class ProductController extends Controller
 {
@@ -14,8 +15,8 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function addproduct(Request $request)
-        
-    {   
+
+    {
         $search = $request['search'] ?? "";
         if($search != ""){
             $products = Products::where('Name', 'LIKE',  "%$search%")->paginate(5);
@@ -68,9 +69,13 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function viewproduct()
-    {   
-        
+    {
+
         $products = Products::all();
         return view('frontend.dashboard.Product.ViewProduct', compact('products'));
     }
+
+
+    
+
 }

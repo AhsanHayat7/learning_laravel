@@ -40,6 +40,7 @@ class AuthController extends Controller
         'name'=>'required',
         'email'=>'required|email|unique:users',
         'password'=>'required|confirmed',
+
         ]);
 
         User::create([
@@ -62,4 +63,5 @@ class AuthController extends Controller
         return redirect('');
 
     }
+
 }

@@ -25,13 +25,14 @@
                     <p class="text-center small">Enter your personal details to create account</p>
                   </div>
 
-                  <form class="row g-3 needs-validation"  method="POST" action="{{ route('register') }}" novalidate>
+                  <form class="row g-3 needs-validation"  method="POST" action="{{ route('register') }}"
+                  novalidate>
                     @csrf
                     <div class="col-12">
                       <label for="yourName" class="form-label">Your Name</label>
                       <input type="text" name="name" class="form-control" id="yourName" >
                       @if ($errors->has('name'))
-                        <div class="invalid-feedback">{{ $errors->first('name') }}</div>
+                        <div class="text-danger">{{ $errors->first('name') }}</div>
                       @endif
                     </div>
 
@@ -39,7 +40,7 @@
                       <label for="yourEmail" class="form-label">Your Email</label>
                       <input type="email" name="email" class="form-control" id="yourEmail" >
                       @if ($errors->has('email'))
-                        <div class="invalid-feedback">{{ $errors->first('email') }}</div>
+                        <div class="text-danger">{{ $errors->first('email') }}</div>
                       @endif
                     </div>
 
@@ -47,7 +48,7 @@
                       <label for="yourPassword" class="form-label">Password</label>
                       <input type="password" name="password" class="form-control" id="yourPassword" >
                       @if ($errors->has('password'))
-                        <div class="invalid-feedback">{{ $errors->first('password') }}</div>
+                        <div class="text-danger">{{ $errors->first('password') }}</div>
                       @endif
                     </div>
 
@@ -59,10 +60,10 @@
 
                     <div class="col-12">
                       <div class="form-check">
-                        <input class="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms" >
+                        <input class="form-check-input" name="terms" type="checkbox" value="id" id="acceptTerms" >
                         <label class="form-check-label" for="acceptTerms">I agree and accept the <a href="#">terms and conditions</a></label>
                         @if ($errors->has('terms'))
-                          <div class="invalid-feedback">{{ $errors->first('terms') }}</div>
+                          <div class="text-danger">{{ $errors->first('terms') }}</div>
                         @endif
                       </div>
                     </div>
@@ -90,5 +91,6 @@
         </div>
 
       </section>
+    </div>
 
  @endsection

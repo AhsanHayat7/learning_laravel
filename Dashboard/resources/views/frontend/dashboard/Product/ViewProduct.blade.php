@@ -36,12 +36,24 @@
                                 <input type="number" class="form-control" id="Price" name="Price" value="{{ $product->Price ?? old('Price') }}">
                             </div>
                             <div class="mb-3">
+                                <select class="form-select" id="Category" name="category_id" aria-label="Default select example">
+                                    <option selected>Open this select menu</option>
+                                    @foreach($categories as $category)
+                                        <option value="{{ $category->category_id }}">{{ $category->CategoryName }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mb-3">
                                 <label for="image" class="form-label">Image</label>
                                 <input type="file" class="form-control" id="Image" name="Image">
                             </div>
                             <div class="mb-3">
                                 <label for="description" class="form-label">Description</label>
                                 <input type="text" class="form-control" id="Description" name="Description" value="{{ $product->Description ?? old('Description') }}">
+                            </div>
+                            <div class="mb-3">
+                                <label for="tags" class="form-label">Tags</label>
+                                <input type="text" class="form-control" id="Tags" name="Tags" value="{{ old('Tags') }}" placeholder="Enter tags separated by commas">
                             </div>
                             <button type="submit" class="btn btn-primary" id="submit-btn">Submit</button>
                         </form>

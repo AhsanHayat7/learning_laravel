@@ -1,11 +1,13 @@
 <?php
 
 namespace App\Http\Controllers\Frontend;
+use Illuminate\Support\Str;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Products;
-use App\Models\Images;
+use App\Models\Category;
+
 
 class ProductController extends Controller
 {
@@ -18,6 +20,7 @@ class ProductController extends Controller
 
     {
         $search = $request['search'] ?? "";
+        $categoryNames = Products::distinct()->pluck('Name')->toArray();
         if($search != ""){
             $products = Products::where('Name', 'LIKE',  "%$search%")->paginate(5);
         }else{
@@ -25,7 +28,7 @@ class ProductController extends Controller
 
         }
         #$products = $search ? Products::where('Name', 'LIKE',  "%$search%")->get() : Products::all();
-        return view('frontend.dashboard.Product.AddProduct', compact('products', 'search'));
+        return view('frontend.dashboard.Product.AddProduct', compact('products', 'search', 'categoryNames'));
     }
 
     /**
@@ -42,6 +45,8 @@ class ProductController extends Controller
             'Price' => 'required|numeric',
             'Image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'Description' => 'required',
+            'category_id'=> 'required',
+            'Tags' => 'nullable|string'
         ]);
 
         // Handle file upload
@@ -51,12 +56,26 @@ class ProductController extends Controller
         $imagePath = 'uploads/';
         $file->move(public_path($imagePath), $filename);
 
+        // Find category_id based on category name
+
+
+
+    // Generate a random SKU
+        $sku = Str::random(8);
+
+        // Check if Tags is provided and convert it to a comma-separated string
+        $tags = $request->input('Tags') ? (is_array($request->input('Tags')) ? implode(',', $request->input('Tags')) : $request->input('Tags')) : '';// Assuming Tags is a comma-separated string
+
+
         // Create new product instance
         $product = new Products;
         $product->Name = $request->input('Name');
         $product->Price = $request->input('Price');
+        $product->category_id = $request->input('category_id');
         $product->Image = $imagePath.$filename;
         $product->Description = $request->input('Description');
+        $product->SKU = $sku;
+        $product->Tags = $tags;
         $product->save();
 
         // Redirect with success message
@@ -70,12 +89,11 @@ class ProductController extends Controller
      */
     public function viewproduct()
     {
-
+        $categories = Category::all();
         $products = Products::all();
-        return view('frontend.dashboard.Product.ViewProduct', compact('products'));
+        return view('frontend.dashboard.Product.ViewProduct', compact('products','categories'));
     }
 
 
-    
 
 }

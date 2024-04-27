@@ -50,7 +50,10 @@
                                     <tr>
                                         <th scope="col" style="width: 10%;">Customer id</th>
                                         <th scope="col" style="width: 20%;">Name</th>
-                                        <th scope="col" style="width: 20%;">Price</th>
+                                        <th scope="col" style="width: 15%;">Price</th>
+                                        <th scope="col" style="width: 15%;">SKU</th> <!-- New column for SKU -->
+                                        <th scope="col" style="width: 20%;">Tags</th> <!-- New column for Tags -->
+                                        <th scope="col" style="width: 20%;">Category_id</th> <!-- New column for Category -->
                                         <th scope="col" style="width: 15%;">Image</th>
                                         <th scope="col" style="width: 20%;">Description</th>
                                     </tr>
@@ -61,6 +64,9 @@
                                         <td>{{ $product->Customer_id }}</td>
                                         <td>{{ $product->Name }}</td>
                                         <td>{{ $product->Price }}</td>
+                                        <td>{{ $product->SKU }}</td> <!-- Display SKU -->
+                                        <td>{{ $product->Tags }}</td> <!-- Display Tags -->
+                                        <td>{{ $product->category_id }}</td>
                                         <td>
                                             <a data-fancybox="product-images" href="{{ asset($product->Image) }}">
                                                 <img src="{{ asset($product->Image) }}" alt="Product Image" style="max-width: 100px;">

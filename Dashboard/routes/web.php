@@ -17,14 +17,15 @@ use App\Http\Controllers\frontend\RegisterController;
 use App\Http\Controllers\frontend\CategoriesController;
 use App\Http\Controllers\Frontend\ProductController;
 use App\Http\Controllers\Frontend\UploadController;
-use App\Http\Models\Customer;
+use App\Http\Controllers\frontend\CategoryController;
+
 
 use App\Http\Controllers\frontend\CartController;
 use App\Http\Controllers\frontend\CheckoutController;
 use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\frontend\ProductDetailController;
 use App\Http\Controllers\frontend\ShopController;
-use App\Http\Controllers\frontend\ProductImageController;
+use App\Http\Controllers\frontend\DetailController;
 
 
 
@@ -100,6 +101,12 @@ Route::get('/Add/All/Product',[ProductController::class, 'addproduct'])->name('a
 Route::post('/Add/All/Product',[ProductController::class, 'store'])->name('product.store');
 Route::get('Add/Product', [ProductController::class, 'viewproduct'])->name('add.product');
 
+// Category
+
+Route::get('/add-category', [CategoryController::class, 'add'])->name('add-category');
+Route::post('/add-category', [CategoryController::class, 'store'])->name('store-category');
+
+
 
 // upload
 
@@ -114,6 +121,7 @@ Route::get('/',[HomeController::class, 'index']);
 Route::get('/cart',[CartController::class, 'cart']);
 Route::get('/checkout',[CheckoutController::class, 'checkout']);
 Route::get('/product-details/{id}', [ProductDetailController::class, 'productdetail'])->name('product-details');
+Route::get('/product-details', [DetailController::class, 'detail']);
 
 Route::get('/shop',[ShopController::class, 'shop']);
 

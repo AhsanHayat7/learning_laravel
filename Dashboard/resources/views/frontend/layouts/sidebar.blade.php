@@ -20,9 +20,14 @@
               </li>
               <li>
                   <a href="{{ route('add.category') }}" class="nav-link">
-                      <i class="bi bi-circle"></i><span>Add Category</span>
+                      <i class="bi bi-circle"></i><span>Add  Category</span>
                   </a>
               </li>
+              <li>
+                <a href="{{ route('add-category') }}" class="nav-link">
+                    <i class="bi bi-circle"></i><span>Add Product Category</span>
+                </a>
+            </li>
           </ul>
       </li>
 
@@ -54,11 +59,11 @@
 
       // Find the submenu link corresponding to the current page
       var submenuLink = document.querySelector('.sidebar-nav .nav-link[href="' + currentPageUrl + '"]');
-      
+
       if (submenuLink) {
           // Add active class to the submenu link
           submenuLink.classList.add('active');
-          
+
           // Open parent collapse if it's closed
           var parentCollapse = submenuLink.parentElement.parentElement.querySelector('.collapse');
           if (parentCollapse && !parentCollapse.classList.contains('show')) {

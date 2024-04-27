@@ -271,7 +271,7 @@
                   <div class="col-lg-4 col-sm-6">
                     <div class="product text-center">
                       <div class="mb-3 position-relative">
-                        <div class="badge text-white bg-"></div><a class="d-block" href="{{url('/home')}}"><img class="img-fluid w-100" src="{{url('web/img/product-7.jpg')}}" alt="..."></a>
+                        <div class="badge text-white bg-"></div><a class="d-block" href="{{url('/product-details')}}"><img class="img-fluid w-100" src="{{url('web/img/product-7.jpg')}}" alt="..."></a>
                         <div class="product-overlay">
                           <ul class="mb-0 list-inline">
                             <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-outline-dark" href="#!"><i class="far fa-heart"></i></a></li>
@@ -370,6 +370,33 @@
                     </div>
                   </div>
                 </div>
+                <div class="row">
+                    @foreach($products as $product)
+                    <!-- Check if the product has images -->
+                    @if($product->images->isNotEmpty())
+                        <!-- PRODUCT-->
+                        <div class="col-lg-4 col-sm-6">
+                            <div class="product text-center">
+                                <div class="mb-3 position-relative">
+                                    <div class="badge text-white bg-{{ $product->Badge }}"></div>
+                                    <a class="d-block" href="{{ route('product-details',$product->Customer_id) }}">
+                                        <img class="img-fluid w-100" src="{{ $product->images->first()->image_path }}" alt="...">
+                                    </a>
+                                    <div class="product-overlay">
+                                        <ul class="mb-0 list-inline">
+                                            <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-outline-dark" href="#!"><i class="far fa-heart"></i></a></li>
+                                            <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark" href="{{ url('/cart') }}">Add to cart</a></li>
+                                            <li class="list-inline-item mr-0"><a class="btn btn-sm btn-outline-dark" href="#productView" data-bs-toggle="modal"><i class="fas fa-expand"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <h6> <a class="reset-anchor" href="{{ route('product-details',$product->Customer_id) }}">{{ $product->Name }}</a></h6>
+                                <p class="small text-muted">${{ $product->Price }}</p>
+                            </div>
+                        </div>
+                    @endif
+                @endforeach
+              </div>
                 <!-- PAGINATION-->
                 <nav aria-label="Page navigation example">
                   <ul class="pagination justify-content-center justify-content-lg-end">

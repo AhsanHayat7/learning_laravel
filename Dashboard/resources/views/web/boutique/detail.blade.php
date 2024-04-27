@@ -74,7 +74,7 @@
                         <div class="col-sm-2 p-sm-0 order-2 order-sm-1 mt-2 mt-sm-0 px-xl-2">
                             <div class="swiper product-slider-thumbs">
                                 <div class="swiper-wrapper">
-                                    @foreach ($product->images as $image)
+                                    @foreach ($product->Images as $image)
                                         <div class="swiper-slide h-auto swiper-thumb-item mb-3">
                                             <img class="w-100" src="{{ asset($image->image_path) }}" alt="...">
                                         </div>
@@ -85,7 +85,7 @@
                         <div class="col-sm-10 order-1 order-sm-2">
                             <div class="swiper product-slider">
                                 <div class="swiper-wrapper">
-                                    @foreach ($product->images as $image)
+                                    @foreach ($product->Images as $image)
                                         <div class="swiper-slide h-auto">
                                             <a class="glightbox product-view" href="{{ asset($image->image_path) }}"
                                                 data-gallery="gallery2" data-glightbox="Product item">
@@ -127,9 +127,22 @@
                     </div>
                     <a class="text-dark p-0 mb-4 d-inline-block" href="#!"><i class="far fa-heart me-2"></i>Add to wish list</a><br>
                     <ul class="list-unstyled small d-inline-block">
-                        <li class="px-3 py-2 mb-1 bg-white"><strong class="text-uppercase">SKU:</strong><span class="ms-2 text-muted">039</span></li>
-                        <li class="px-3 py-2 mb-1 bg-white text-muted"><strong class="text-uppercase text-dark">Category:</strong><a class="reset-anchor ms-2" href="#!">Demo Products</a></li>
-                        <li class="px-3 py-2 mb-1 bg-white text-muted"><strong class="text-uppercase text-dark">Tags:</strong><a class="reset-anchor ms-2" href="#!">Innovation</a></li>
+                        <li class="px-3 py-2 mb-1 bg-white"><strong class="text-uppercase">SKU:</strong><span class="ms-2 text-muted">{{ $product->SKU }}</span></li>
+                        <li class="px-3 py-2 mb-1 bg-white text-muted">
+                            <strong class="text-uppercase text-dark">Category:</strong>
+                            <a class="reset-anchor ms-2" href="#!">{{ $product->category->CategoryName }}</a>
+                        </li>
+                        <li class="px-3 py-2 mb-1 bg-white text-muted"><strong class="text-uppercase text-dark">Tags:</strong>
+                            @if(is_array($product->Tags))
+                                @foreach ($product->Tags as $tag)
+                                    <a class="reset-anchor ms-2" href="#!">{{ $tag }}</a>
+                                @endforeach
+                            @elseif($product->Tags)
+                            <span class="ms-2">{{ $product->Tags }}</span>
+                            @else
+                                No tags available
+                            @endif
+                        </li>
                     </ul>
                 </div>
             </div>

@@ -28,6 +28,11 @@
                     <i class="bi bi-circle"></i><span>Add Product Category</span>
                 </a>
             </li>
+            <li>
+                <a href="{{ route('product.category') }}" class="nav-link">
+                    <i class="bi bi-circle"></i><span>View Product Category</span>
+                </a>
+            </li>
           </ul>
       </li>
 

@@ -89,6 +89,7 @@ Route::post('/Add/All/Category',[CategoriesController::class, 'store'])->name('c
 Route::get('/all',[CategoriesController::class, 'all']);
 Route::get('/Add/Category',[CategoriesController::class, 'form'])->name('add.category');
 
+
 // Delete Route
 
 Route::get('/add/delete/{id}',[CategoriesController::class, 'delete'])->name('customer.delete');
@@ -104,7 +105,9 @@ Route::get('Add/Product', [ProductController::class, 'viewproduct'])->name('add.
 // Category
 
 Route::get('/add-category', [CategoryController::class, 'add'])->name('add-category');
-Route::post('/add-category', [CategoryController::class, 'store'])->name('store-category');
+Route::post('/store-category', [CategoryController::class, 'store'])->name('store-category');
+Route::get('/product-category', [CategoryController::class, 'view'])->name('product.category');
+
 
 
 
@@ -141,3 +144,4 @@ Route::group(['middleware'=>'auth'],function(){
     Route::get('/home',[DashboardController::class, 'home']);
 });
 
+// categories s

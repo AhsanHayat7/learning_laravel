@@ -58,21 +58,20 @@
             </div>
           </div>
         </section>
-        <section class="py-5">
-          <div class="container p-0">
-            <div class="row">
-              <!-- SHOP SIDEBAR-->
-              <div class="col-lg-3 order-2 order-lg-1">
+<section class="py-5">
+    <div class="container p-0">
+        <div class="row">
+            <!-- SHOP SIDEBAR-->
+            <div class="col-lg-3 order-2 order-lg-1">
                 <h5 class="text-uppercase mb-4">Categories</h5>
-                <div class="py-2 px-4 bg-dark text-white mb-3"><strong class="small text-uppercase fw-bold">Fashion &amp; Acc</strong></div>
-                <ul class="list-unstyled small text-muted ps-lg-4 font-weight-normal">
-                  <li class="mb-2"><a class="reset-anchor" href="#!">Women's T-Shirts</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="#!">Men's T-Shirts</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="#!">Dresses</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="#!">Novelty socks</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="#!">Women's sunglasses</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="#!">Men's sunglasses</a></li>
-                </ul>
+                @foreach($getCategories as $category)
+                    <div class="py-2 px-4 bg-dark text-white mb-3"><strong class="small text-uppercase fw-bold">{{ $category['CategoryName'] }}</strong></div>
+                    <ul class="list-unstyled small text-muted ps-lg-4 font-weight-normal">
+                        @foreach($category['subcategories'] as $subcategory)
+                            <li class="mb-2"><a class="reset-anchor" href="?category_id={{$subcategory['category_id']}}">{{ $subcategory['CategoryName'] }}</a></li>
+                        @endforeach
+                    </ul>
+                @endforeach
                 <div class="py-2 px-4 bg-light mb-3"><strong class="small text-uppercase fw-bold">Health &amp; Beauty</strong></div>
                 <ul class="list-unstyled small text-muted ps-lg-4 font-weight-normal">
                   <li class="mb-2"><a class="reset-anchor" href="#!">Shavers</a></li>

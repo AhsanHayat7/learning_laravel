@@ -10,9 +10,13 @@ use App\Models\Category;
 class ShopController extends Controller
 {
     //
-    public function shop(){
+    public function shop(Request $request){
 
-        $products = Products::all();
+        $products = Products::orderby('Customer_id', 'desc');
+        if(isset($request->category_id) && !empty($request->category_id)){
+            $products->where('category_id', $request->category_id);
+        }
+        $products = $products->get();
         $categories = Category::all();
         $getCategories = Category::getCategories();
 

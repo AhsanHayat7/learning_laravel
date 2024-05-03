@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Products;
 use App\Models\Category;
+use App\Models\Carts;
+use Illuminate\Support\Facades\Auth;
 
 
 class ProductController extends Controller
@@ -93,7 +95,5 @@ class ProductController extends Controller
         $products = Products::all();
         return view('frontend.dashboard.Product.ViewProduct', compact('products','categories'));
     }
-
-
 
 }

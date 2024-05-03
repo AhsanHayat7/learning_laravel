@@ -121,7 +121,7 @@ Route::get('/upload', function(){
 //boutique web
 
 Route::get('/',[HomeController::class, 'index']);
-Route::get('/cart',[CartController::class, 'cart']);
+Route::get('/cart',[CartController::class, 'cart'])->name('cart');
 Route::get('/checkout',[CheckoutController::class, 'checkout']);
 Route::get('/product-details/{id}', [ProductDetailController::class, 'productdetail'])->name('product-details');
 Route::get('/product-details', [DetailController::class, 'detail']);
@@ -144,4 +144,10 @@ Route::group(['middleware'=>'auth'],function(){
     Route::get('/home',[DashboardController::class, 'home']);
 });
 
-// categories s
+
+// Route for Adding Product to Cart:
+Route::post('/add-to-cart', [ProductDetailController::class, 'addToCart'])->name('addToCart');
+
+// Route for Cart Page:
+Route::get('/cart', [CartController::class, 'showCart'])->name('cart');
+Route::post('/cart/delete', [CartController::class, 'deleteCartItem'])->name('cart.delete');

@@ -90,56 +90,6 @@
                   <li class="mb-2"><a class="reset-anchor" href="#!">Cell Phone bluetooth headsets</a></li>
                   <li class="mb-2"><a class="reset-anchor" href="#!">Keyboards</a></li>
                 </ul>
-                <h6 class="text-uppercase mb-4">Price range</h6>
-                <div class="price-range pt-4 mb-5">
-                  <div id="range"></div>
-                  <div class="row pt-2">
-                    <div class="col-6"><strong class="small fw-bold text-uppercase">From</strong></div>
-                    <div class="col-6 text-end"><strong class="small fw-bold text-uppercase">To</strong></div>
-                  </div>
-                </div>
-                <h6 class="text-uppercase mb-3">Show only</h6>
-                <div class="form-check mb-1">
-                  <input class="form-check-input" type="checkbox" id="checkbox_1">
-                  <label class="form-check-label" for="checkbox_1">Returns Accepted</label>
-                </div>
-                <div class="form-check mb-1">
-                  <input class="form-check-input" type="checkbox" id="checkbox_2">
-                  <label class="form-check-label" for="checkbox_2">Returns Accepted</label>
-                </div>
-                <div class="form-check mb-1">
-                  <input class="form-check-input" type="checkbox" id="checkbox_3">
-                  <label class="form-check-label" for="checkbox_3">Completed Items</label>
-                </div>
-                <div class="form-check mb-1">
-                  <input class="form-check-input" type="checkbox" id="checkbox_4">
-                  <label class="form-check-label" for="checkbox_4">Sold Items</label>
-                </div>
-                <div class="form-check mb-1">
-                  <input class="form-check-input" type="checkbox" id="checkbox_5">
-                  <label class="form-check-label" for="checkbox_5">Deals &amp; Savings</label>
-                </div>
-                <div class="form-check mb-4">
-                  <input class="form-check-input" type="checkbox" id="checkbox_6">
-                  <label class="form-check-label" for="checkbox_6">Authorized Seller</label>
-                </div>
-                <h6 class="text-uppercase mb-3">Buying format</h6>
-                <div class="form-check mb-1">
-                  <input class="form-check-input" type="radio" name="customRadio" id="radio_1">
-                  <label class="form-check-label" for="radio_1">All Listings</label>
-                </div>
-                <div class="form-check mb-1">
-                  <input class="form-check-input" type="radio" name="customRadio" id="radio_2">
-                  <label class="form-check-label" for="radio_2">Best Offer</label>
-                </div>
-                <div class="form-check mb-1">
-                  <input class="form-check-input" type="radio" name="customRadio" id="radio_3">
-                  <label class="form-check-label" for="radio_3">Auction</label>
-                </div>
-                <div class="form-check mb-1">
-                  <input class="form-check-input" type="radio" name="customRadio" id="radio_4">
-                  <label class="form-check-label" for="radio_4">Buy It Now</label>
-                </div>
               </div>
               <!-- SHOP LISTING-->
               <div class="col-lg-9 order-1 order-lg-2 mb-5 mb-lg-0">
@@ -149,21 +99,20 @@
                   </div>
                   <div class="col-lg-6">
                     <ul class="list-inline d-flex align-items-center justify-content-lg-end mb-0">
-                      <li class="list-inline-item text-muted me-3"><a class="reset-anchor p-0" href="#!"><i class="fas fa-th-large"></i></a></li>
-                      <li class="list-inline-item text-muted me-3"><a class="reset-anchor p-0" href="#!"><i class="fas fa-th"></i></a></li>
-                      <li class="list-inline-item">
-                        <select class="selectpicker" data-customclass="form-control form-control-sm">
-                          <option value>Sort By </option>
-                          <option value="default">Default sorting </option>
-                          <option value="popularity">Popularity </option>
-                          <option value="low-high">Price: Low to High </option>
-                          <option value="high-low">Price: High to Low </option>
-                        </select>
-                      </li>
+                        <li class="list-inline-item text-muted me-3"><a class="reset-anchor p-0" href="#!"><i class="fas fa-th-large"></i></a></li>
+                        <li class="list-inline-item text-muted me-3"><a class="reset-anchor p-0" href="#!"><i class="fas fa-th"></i></a></li>
+                        <li class="list-inline-item">
+                            <form action="{{ url('/shop') }}" method="GET">
+                                <select class="selectpicker" name="orderby" data-customclass="form-control form-control-sm" onchange="this.form.submit()">
+                                    <option value="">Sort By</option>
+                                    <option value="desc" {{ request('orderby') == 'desc' ? 'selected' : '' }}>Default Descending sorting</option>
+                                    <option value="asc" {{ request('orderby') == 'asc' ? 'selected' : '' }}>Default Ascending sorting</option>
+                                </select>
+                            </form>
+                        </li>
                     </ul>
-                  </div>
                 </div>
-
+                <div class="col-lg-12 mb-4"></div>
                 <div class="row">
                     @foreach($products as $product)
                     <!-- Check if the product has images -->
@@ -192,14 +141,23 @@
                 @endforeach
               </div>
                 <!-- PAGINATION-->
+                <!-- Add your product listing HTML here -->
+
+                    <!-- PAGINATION-->
                 <nav aria-label="Page navigation example">
-                  <ul class="pagination justify-content-center justify-content-lg-end">
-                    <li class="page-item mx-1"><a class="page-link" href="#!" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                    <li class="page-item mx-1 active"><a class="page-link" href="#!">1</a></li>
-                    <li class="page-item mx-1"><a class="page-link" href="#!">2</a></li>
-                    <li class="page-item mx-1"><a class="page-link" href="#!">3</a></li>
-                    <li class="page-item ms-1"><a class="page-link" href="#!" aria-label="Next"><span aria-hidden="true">»</span></a></li>
-                  </ul>
+                    <ul class="pagination justify-content-center justify-content-lg-end">
+                        @if ($products->previousPageUrl())
+                            <li class="page-item mx-1"><a class="page-link" href="{{ $products->previousPageUrl() }}" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                        @endif
+
+                        @foreach ($products->getUrlRange(1, $products->lastPage()) as $page => $url)
+                            <li class="page-item mx-1 {{ $page == $products->currentPage() ? 'active' : '' }}"><a class="page-link" href="{{ $url }}">{{ $page }}</a></li>
+                        @endforeach
+
+                        @if ($products->nextPageUrl())
+                            <li class="page-item ms-1"><a class="page-link" href="{{ $products->nextPageUrl() }}" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                        @endif
+                    </ul>
                 </nav>
               </div>
             </div>
@@ -262,3 +220,4 @@
 
 
  @endsection
+

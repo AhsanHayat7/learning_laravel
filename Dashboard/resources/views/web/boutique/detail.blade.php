@@ -114,25 +114,21 @@
                     <p class="text-sm mb-4">{{ $product->Description }}</p>
                     <form action="{{ route('addToCart') }}" method="POST" class="row align-items-stretch mb-4">
                         @csrf
-                    {{-- <div class="row align-items-stretch mb-4"> --}}
                         <div class="col-sm-5 pr-sm-0">
                             <div class="border d-flex align-items-center justify-content-between py-1 px-3 bg-white border-white">
                                 <span class="small text-uppercase text-gray mr-4 no-select">Quantity</span>
                                 <div class="quantity">
                                     <button class="dec-btn p-0"><i class="fas fa-caret-left"></i></button>
-                                    <input class="form-control border-0 shadow-0 p-0" type="text" name="quantity" value="1">
+                                    <input class="form-control border-0 shadow-0 p-0" type="number" name="quantity" value="1">
                                     <button class="inc-btn p-0"><i class="fas fa-caret-right"></i></button>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-3 pl-sm-0">
-
-                                <input type="hidden" name="product_id" value="{{ $product->Customer_id }}">
-
-                                <button type="submit" class="btn btn-dark btn-sm btn-block h-100 d-flex align-items-center justify-content-center px-0">Add to cart</button>
+                            <input type="hidden" name="product_id" value="{{ $product->Customer_id }}">
+                            <button type="submit" class="btn btn-dark btn-sm btn-block h-100 d-flex align-items-center justify-content-center px-0">Add to cart</button>
                         </div>
                     </form>
-
                     {{-- </div> --}}
                     <a class="text-dark p-0 mb-4 d-inline-block" href="#!"><i class="far fa-heart me-2"></i>Add to wish list</a><br>
                     <ul class="list-unstyled small d-inline-block">

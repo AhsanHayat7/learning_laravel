@@ -34,7 +34,7 @@ class ShopController extends Controller
         $getCategories = Category::getCategories();
 
         // Pass products, categories, and categories with subcategories to the view
-        return view('web.Boutique.shop', compact('products','categories','getCategories'));
+        return view('web.Boutique.shop', compact('products','categories','getCategories',));
     }
 
 }

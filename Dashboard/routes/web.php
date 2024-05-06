@@ -26,9 +26,7 @@ use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\frontend\ProductDetailController;
 use App\Http\Controllers\frontend\ShopController;
 use App\Http\Controllers\frontend\DetailController;
-
-
-
+use App\Http\Controllers\frontend\OrderController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -122,7 +120,6 @@ Route::get('/upload', function(){
 
 Route::get('/',[HomeController::class, 'index']);
 Route::get('/cart',[CartController::class, 'cart'])->name('cart');
-Route::get('/checkout',[CheckoutController::class, 'checkout']);
 Route::get('/product-details/{id}', [ProductDetailController::class, 'productdetail'])->name('product-details');
 Route::get('/product-details', [DetailController::class, 'detail']);
 
@@ -151,3 +148,9 @@ Route::post('/add-to-cart', [ProductDetailController::class, 'addToCart'])->name
 // Route for Cart Page:
 Route::get('/cart', [CartController::class, 'showCart'])->name('cart');
 Route::post('/cart/delete', [CartController::class, 'deleteCartItem'])->name('cart.delete');
+
+// checkout
+Route::post('/checkout',[CheckoutController::class, 'checkout'])->name('checkout');
+Route::get('/checkout',[CheckoutController::class, 'showcheckout']);
+
+

@@ -36,41 +36,37 @@
                             </tr>
                         </thead>
                         <tbody class="border-0">
-                            @foreach($cartItems as $item)
+                            <!-- Inside the table body in cart.blade.php -->
+                                @foreach($cartItems as $item)
                             <tr>
-                                <th class="ps-0 py-3 border-light" scope="row">
+                                <!-- Product Name and Image -->
+                                <td class="ps-0 py-3 border-light" scope="row">
                                     <div class="d-flex align-items-center">
-                                        @if($item->product)
-                                            <img src="{{ $item->product->Image }}" alt="Product Image" width="70"/>
-                                            <div class="ms-3">
-                                                <strong class="h6">{{ $item->product->Name }}</strong>
-                                            </div>
-                                        @else
-                                            <!-- Display placeholder image or text if product is not found -->
-                                            <span class="text-muted">Product Not Found</span>
-                                        @endif
+                                        <img src="{{ $item->product->Image }}" alt="Product Image" width="70"/>
+                                        <div class="ms-3">
+                                            <strong class="h6">{{ $item->product->Name }}</strong>
+                                        </div>
                                     </div>
-                                </th>
-                                <td class="p-3 align-middle border-light">
-                                    @if($item->product)
-                                        <p class="mb-0 small">${{ $item->product->Price }}</p>
-                                    @endif
                                 </td>
+                                <!-- Price -->
+                                <td class="p-3 align-middle border-light">
+                                    <p class="mb-0 small">${{ $item->product->Price }}</p>
+                                </td>
+                                <!-- Quantity -->
                                 <td class="p-3 align-middle border-light">
                                     <div class="border d-flex align-items-center justify-content-between px-3">
                                         <span class="small text-uppercase text-gray headings-font-family">Quantity</span>
                                         <div class="quantity">
-                                            <button class="dec-btn p-0"><i class="fas fa-caret-left"></i></button>
+                                            <!-- Display the quantity stored in the cart -->
                                             <input class="form-control form-control-sm border-0 shadow-0 p-0" type="text" value="{{ $item->quantity }}"/>
-                                            <button class="inc-btn p-0"><i class="fas fa-caret-right"></i></button>
                                         </div>
                                     </div>
                                 </td>
+                                <!-- Total -->
                                 <td class="p-3 align-middle border-light">
-                                    @if($item->product)
-                                        <p class="mb-0 small">${{ $item->quantity * $item->product->Price }}</p>
-                                    @endif
+                                    <p class="mb-0 small">${{ $item->quantity * $item->product->Price }}</p>
                                 </td>
+                                <!-- Remove Button -->
                                 <td class="p-3 align-middle border-light">
                                     <form action="{{ route('cart.delete') }}" method="POST">
                                         @csrf
@@ -81,7 +77,7 @@
                                     </form>
                                 </td>
                             </tr>
-                        @endforeach
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

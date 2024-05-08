@@ -91,7 +91,15 @@
                                 </a>
                                 <div class="product-overlay">
                                     <ul class="mb-0 list-inline">
-                                        <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-outline-dark" href="#!"><i class="far fa-heart"></i></a></li>
+                                        <li class="list-inline-item m-0 p-0">
+                                            <form action="{{ route('wishlist.add') }}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="product_id" value="{{ $product->Customer_id }}">
+                                                <button type="submit" class="btn btn-sm btn-outline-dark">
+                                                    <i class="far fa-heart"></i>
+                                                </button>
+                                            </form>
+                                        </li>
                                         <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark" href="{{ route('product-details',$product->Customer_id) }}">Add to cart</a></li>
                                         <!-- Ensure the correct parameter name is passed -->
                                         <li class="list-inline-item me-0"><a class="btn btn-sm btn-outline-dark" href="{{ route('product-details', $product->Customer_id) }}"><i class="fas fa-expand"></i></a></li>

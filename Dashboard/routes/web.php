@@ -19,7 +19,7 @@ use App\Http\Controllers\Frontend\ProductController;
 use App\Http\Controllers\Frontend\UploadController;
 use App\Http\Controllers\frontend\CategoryController;
 
-
+use App\Http\Controllers\frontend\WishlistController;
 use App\Http\Controllers\frontend\CartController;
 use App\Http\Controllers\frontend\CheckoutController;
 use App\Http\Controllers\frontend\HomeController;
@@ -154,3 +154,9 @@ Route::post('/checkout',[CheckoutController::class, 'checkout'])->name('checkout
 Route::get('/checkout',[CheckoutController::class, 'showcheckout']);
 
 
+//wishlist
+
+Route::post('/wishlist/add', [WishlistController::class, 'addToWishlist'])->name('wishlist.add');
+Route::delete('/wishlist/remove/{wishlist}', [WishlistController::class, 'removeFromWishlist'])->name('wishlist.remove');
+
+Route::get('/wishlist',[WishlistController::class, 'wishlist'])->name('wishlist');

@@ -16,6 +16,7 @@ class CartController extends Controller
         // Fetch cart items for the authenticated user
         $userId = Auth::id();
         $cartItems = Carts::where('user_id', $userId)->get();
+        $cartItemsCount = $cartItems->count();
 
 
         // Calculate subtotal and total
@@ -27,7 +28,7 @@ class CartController extends Controller
         $total = $subtotal;
 
         // Pass cart items to the view
-        return view('web.boutique.cart', compact('cartItems','subtotal', 'total'));
+        return view('web.boutique.cart', compact('cartItems','subtotal', 'total','cartItemsCount'));
     }
 
 

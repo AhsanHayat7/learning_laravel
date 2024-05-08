@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Products;
 use App\Models\Category;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Carts;
+
 
 class ShopController extends Controller
 {
@@ -33,8 +36,12 @@ class ShopController extends Controller
         // Retrieve categories with subcategories
         $getCategories = Category::getCategories();
 
+        $userId = Auth::id();
+        $cartItemsCount = Carts::where('user_id', $userId)->count();
+
+
         // Pass products, categories, and categories with subcategories to the view
-        return view('web.Boutique.shop', compact('products','categories','getCategories',));
+        return view('web.Boutique.shop', compact('products','categories','getCategories','cartItemsCount'));
     }
 
 }

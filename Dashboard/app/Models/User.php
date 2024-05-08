@@ -44,5 +44,8 @@ class User extends Authenticatable
     /**
      * Get the carts associated with the user.
      */
-   
+    public function wishlist()
+    {
+        return $this->belongsToMany(Products::class, 'wishlist', 'user_id', 'product_id')->withTimestamps();
+    }
 }

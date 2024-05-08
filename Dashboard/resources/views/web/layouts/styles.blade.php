@@ -15,3 +15,5 @@
 <!-- Favicon-->
 <link rel="shortcut icon" href="{{url('web/img/favicon.png')}}">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link  href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel ="stylesheet"/>
+<link href="{{url('frontend/assets/css/style.css')}}" rel="stylesheet">

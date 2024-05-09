@@ -116,18 +116,26 @@
                 <div class="row">
                     @foreach($products as $product)
                     <!-- Check if the product has images -->
-                    @if($product->images->isNotEmpty())
+                    {{-- @if($product->images->isNotEmpty()) --}}
                         <!-- PRODUCT-->
                         <div class="col-lg-4 col-sm-6">
                             <div class="product text-center">
                                 <div class="mb-3 position-relative">
                                     <div class="badge text-white bg-{{ $product->Badge }}"></div>
-                                    <a class="d-block" href="{{ route('product-details',$product->Customer_id) }}">
-                                        <img class="img-fluid w-100" src="{{ $product->images->first()->image_path }}" alt="...">
-                                    </a>
+                                        <a class="d-block" href="{{ route('product-details',$product->Customer_id) }}">
+                                            <img class="img-fluid w-100" src="{{ $product->Image }}" alt="...">
+                                        </a>
                                     <div class="product-overlay">
                                         <ul class="mb-0 list-inline">
-                                            <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-outline-dark" href="#!"><i class="far fa-heart"></i></a></li>
+                                            <li class="list-inline-item m-0 p-0">
+                                                <form action="{{ route('wishlist.add') }}" method="POST">
+                                                    @csrf
+                                                    <input type="hidden" name="product_id" value="{{ $product->Customer_id }}">
+                                                    <button type="submit" class="btn btn-sm btn-outline-dark">
+                                                        <i class="far fa-heart"></i>
+                                                    </button>
+                                                </form>
+                                            </li>
                                             <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark" href="{{ route('product-details',$product->Customer_id) }}">Add to cart</a></li>
                                             <li class="list-inline-item mr-0"><a class="btn btn-sm btn-outline-dark" href="#productView" data-bs-toggle="modal"><i class="fas fa-expand"></i></a></li>
                                         </ul>
@@ -137,28 +145,19 @@
                                 <p class="small text-muted">${{ $product->Price }}</p>
                             </div>
                         </div>
-                    @endif
+                    {{-- @endif --}}
                 @endforeach
               </div>
                 <!-- PAGINATION-->
                 <!-- Add your product listing HTML here -->
 
                     <!-- PAGINATION-->
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination justify-content-center justify-content-lg-end">
-                        @if ($products->previousPageUrl())
-                            <li class="page-item mx-1"><a class="page-link" href="{{ $products->previousPageUrl() }}" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                        @endif
-
-                        @foreach ($products->getUrlRange(1, $products->lastPage()) as $page => $url)
-                            <li class="page-item mx-1 {{ $page == $products->currentPage() ? 'active' : '' }}"><a class="page-link" href="{{ $url }}">{{ $page }}</a></li>
-                        @endforeach
-
-                        @if ($products->nextPageUrl())
-                            <li class="page-item ms-1"><a class="page-link" href="{{ $products->nextPageUrl() }}" aria-label="Next"><span aria-hidden="true">»</span></a></li>
-                        @endif
-                    </ul>
-                </nav>
+            <div class="row">
+                <div class="col-lg-12">
+                    <nav aria-label="Page navigation example">
+                        {{ $products->links('pagination::bootstrap-4') }}
+                    </nav>
+                </div>
               </div>
             </div>
           </div>

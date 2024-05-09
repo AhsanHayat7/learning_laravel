@@ -9,7 +9,6 @@ use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Carts;
 
-
 class ShopController extends Controller
 {
     //
@@ -28,7 +27,8 @@ class ShopController extends Controller
         }
 
         // Retrieve paginated products
-        $products = $productsQuery->paginate(12);
+        $products = $productsQuery->paginate(3);
+
 
         // Retrieve all categories
         $categories = Category::all();
@@ -41,7 +41,7 @@ class ShopController extends Controller
 
 
         // Pass products, categories, and categories with subcategories to the view
-        return view('web.Boutique.shop', compact('products','categories','getCategories','cartItemsCount'));
+        return view('web.Boutique.shop', compact('products','categories','getCategories','cartItemsCount',));
     }
 
 }

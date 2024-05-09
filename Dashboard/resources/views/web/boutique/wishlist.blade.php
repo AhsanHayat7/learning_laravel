@@ -5,12 +5,11 @@
     <h2 class="text-center mb-4">Wishlist</h2>
     <div class="row justify-content-center">
         <div class="col-md-10">
-
             @foreach($wishlistItems as $wishlistItem)
             <div class="card mb-3">
                 <div class="row no-gutters">
                     <!-- Product Image -->
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <img src="{{ $wishlistItem->product->Image }}" class="card-img" alt="Product Image">
                     </div>
                     <!-- Product Details -->
@@ -28,8 +27,8 @@
                             <!-- Spacer -->
                             <div class="col-md-2"></div>
                             <!-- Add to Cart Button -->
-                            <div class="col-md-2">
-                                <button type="submit" class="btn btn-dark btn-sm mb-2">Add to cart</button>
+                            <div class="col-md-2 d-flex justify-content-center mt-3">
+                                <a href="{{ route('product-details', $wishlistItem->product->Customer_id) }}" class="btn btn-dark btn-sm mb-2">Add to cart</a>
                             </div>
                             <div class="col-md-2"></div>
                             <!-- Remove Button -->

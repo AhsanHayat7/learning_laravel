@@ -5,6 +5,8 @@ namespace App\Http\Controllers\frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Wishlist;
+use App\Models\Products;
+
 class WishlistController extends Controller
 {
     //
@@ -12,9 +14,9 @@ class WishlistController extends Controller
 {
     // Retrieve the wishlist items for the authenticated user
     $wishlistItems = Wishlist::where('user_id', auth()->id())->get();
-
+    $product = Products::all();
     // Pass the wishlist items to the wishlist view
-    return view('web.boutique.wishlist', compact('wishlistItems'));
+    return view('web.boutique.wishlist', compact('wishlistItems','product'));
 }
 
 // Method to add a product to the wishlist

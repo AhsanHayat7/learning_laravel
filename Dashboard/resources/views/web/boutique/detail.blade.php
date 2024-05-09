@@ -74,6 +74,9 @@
                         <div class="col-sm-2 p-sm-0 order-2 order-sm-1 mt-2 mt-sm-0 px-xl-2">
                             <div class="swiper product-slider-thumbs">
                                 <div class="swiper-wrapper">
+                                    <div class="swiper-slide h-auto swiper-thumb-item mb-3">
+                                        <img class="w-100" src="{{ asset($product->Image) }}" alt="...">
+                                    </div>
                                     @foreach ($product->Images as $image)
                                         <div class="swiper-slide h-auto swiper-thumb-item mb-3">
                                             <img class="w-100" src="{{ asset($image->image_path) }}" alt="...">
@@ -85,6 +88,13 @@
                         <div class="col-sm-10 order-1 order-sm-2">
                             <div class="swiper product-slider">
                                 <div class="swiper-wrapper">
+                                    <div class="swiper-slide h-auto">
+                                        <a class="glightbox product-view" href="{{ asset($product->Image) }}"
+                                            data-gallery="gallery2" data-glightbox="Product item">
+                                            <img class="img-fluid" src="{{ asset($product->Image) }}"
+                                                alt="...">
+                                        </a>
+                                    </div>
                                     @foreach ($product->Images as $image)
                                         <div class="swiper-slide h-auto">
                                             <a class="glightbox product-view" href="{{ asset($image->image_path) }}"

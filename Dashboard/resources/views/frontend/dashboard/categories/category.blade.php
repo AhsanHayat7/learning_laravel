@@ -30,23 +30,32 @@
                             @csrf
                             <div class="mb-3">
                                 <label for="category_name" class="form-label">Category Name</label>
-                                <input type="text" class="form-control" id="category_name" name="CategoryName" required>
+                                <input type="text" class="form-control" id="CategoryName" name="CategoryName" value="{{ $category->CategoryName ?? '' }}">
                             </div>
                             <div class="mb-3">
                                 <label for="category_name" class="form-label">Category levels</label>
                                 <select name="parent_id" class="form-control">
                                     <option value="">Select</option>
-                                    <option value="0">Main Category</option>
+                                    <option value="0" {{ $category->parent_id == 0 ? 'selected' : '' }}>Main Category</option>
+                                    @php
+                                        $processedSubcategoryNames = [];
+                                    @endphp
                                     @foreach($getCategories as $cat)
-                                        <option value="{{ $cat['category_id']}}">{{ $cat['CategoryName']}}</option>
+                                        @if($cat['parent_id'] == 0)
+                                            <option value="{{ $cat['category_id'] }}" {{ $category->parent_id == $cat['category_id'] ? 'selected' : '' }}>
+                                                {{ $cat['CategoryName'] }}
+                                            </option>
+                                        @endif
                                         @if(!empty($cat['subcategories']))
                                             @foreach($cat['subcategories'] as $subcat)
-                                                    <option value="{{ $subcat['category_id']}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&raquo;{{ $subcat['CategoryName']}}</option>
-                                                    @if(!empty($subcat['subcategories']))
-                                                        @foreach($subcat['subcategories'] as $subsubcat)
-                                                            <option value="{{ $subsubcat['category_id']}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&raquo;{{ $subsubcat['CategoryName']}}</option>
-                                                        @endforeach
-                                                    @endif
+                                                @if(!in_array($subcat['CategoryName'], $processedSubcategoryNames))
+                                                    <option value="{{ $subcat['category_id'] }}" {{ $category->parent_id == $subcat['category_id'] ? 'selected' : '' }}>
+                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&raquo;{{ $subcat['CategoryName'] }}
+                                                    </option>
+                                                    @php
+                                                        array_push($processedSubcategoryNames, $subcat['CategoryName']);
+                                                    @endphp
+                                                @endif
                                             @endforeach
                                         @endif
                                     @endforeach
@@ -54,19 +63,19 @@
                             </div>
                             <div class="mb-3">
                                 <label for="category_image" class="form-label">Category Image</label>
-                                <input type="file" class="form-control" id="category_image" name="category_image">
+                                <input type="file" class="form-control" id="category_image" name="category_image" value="{{$category->category_image ?? ''}}">
                             </div>
                             <div class="mb-3">
                                 <label for="category_discount" class="form-label">Category Discount</label>
-                                <input type="text" class="form-control" id="category_discount" name="category_discount">
+                                <input type="text" class="form-control" id="category_discount" name="category_discount" value="{{$category->category_discount ?? ''}}">
                             </div>
                             <div class="mb-3">
                                 <label for="description" class="form-label">Description</label>
-                                <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+                                <textarea class="form-control" id="description" name="description" rows="3">{{$category->description ?? ''}}</textarea>
                             </div>
                             <div class="mb-3">
                                 <label for="url" class="form-label">URL</label>
-                                <input type="text" class="form-control" id="url" name="url">
+                                <input type="text" class="form-control" id="url" name="url" value="{{$category->url ?? ''}}">
                             </div>
                             <div class="mb-3">
                                 <label for="status" class="form-label">Status</label>
@@ -85,5 +94,4 @@
         </div>
     </section>
 </main>
-
 @endsection

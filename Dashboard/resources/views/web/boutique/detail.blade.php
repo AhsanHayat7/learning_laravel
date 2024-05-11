@@ -140,7 +140,7 @@
                         </div>
                     </form>
                     {{-- </div> --}}
-                    <a class="text-dark p-0 mb-4 d-inline-block" href="#!"><i class="far fa-heart me-2"></i>Add to wish list</a><br>
+                    <a class="text-dark p-0 mb-4 d-inline-block" href="{{route('wishlist')}}"><i class="far fa-heart me-2"></i>Add to wish list</a><br>
                     <ul class="list-unstyled small d-inline-block">
                         <li class="px-3 py-2 mb-1 bg-white"><strong class="text-uppercase">SKU:</strong><span class="ms-2 text-muted">{{ $product->SKU }}</span></li>
                         <li class="px-3 py-2 mb-1 bg-white text-muted">

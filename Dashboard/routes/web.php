@@ -90,9 +90,9 @@ Route::get('/Add/Category',[CategoriesController::class, 'form'])->name('add.cat
 
 // Delete Route
 
-Route::get('/add/delete/{id}',[CategoriesController::class, 'delete'])->name('customer.delete');
-Route::get('/add/delete/{id}',[CategoriesController::class, 'delete'])->name('customer.delete');
-Route::get('/add/edit/{id}',[CategoriesController::class, 'edit'])->name('customer.edit');
+Route::get('customer/add/delete/{id}',[CategoriesController::class, 'delete'])->name('customer.delete');
+Route::get('customer/add/delete/{id}',[CategoriesController::class, 'delete'])->name('customer.delete');
+Route::get('customer/add/edit/{id}',[CategoriesController::class, 'edit'])->name('customer.edit');
 
 //product
 
@@ -102,10 +102,11 @@ Route::get('Add/Product', [ProductController::class, 'viewproduct'])->name('add.
 
 // Category
 
-Route::get('/add-category', [CategoryController::class, 'add'])->name('add-category');
-Route::post('/store-category', [CategoryController::class, 'store'])->name('store-category');
-Route::get('/product-category', [CategoryController::class, 'view'])->name('product.category');
-
+Route::get('category/add-category', [CategoryController::class, 'add'])->name('add-category');
+Route::post('category/store-category', [CategoryController::class, 'store'])->name('store-category');
+Route::get('category/product-category', [CategoryController::class, 'view'])->name('product.category');
+Route::get('category/add/delete/{id}',[CategoryController::class, 'delete'])->name('category.delete');
+Route::get('category/add/edit/{id}',[CategoryController::class, 'edit'])->name('category.edit');
 
 
 

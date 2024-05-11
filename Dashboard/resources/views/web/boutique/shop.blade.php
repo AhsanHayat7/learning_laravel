@@ -72,30 +72,12 @@
                         @endforeach
                     </ul>
                 @endforeach
-                <div class="py-2 px-4 bg-light mb-3"><strong class="small text-uppercase fw-bold">Health &amp; Beauty</strong></div>
-                <ul class="list-unstyled small text-muted ps-lg-4 font-weight-normal">
-                  <li class="mb-2"><a class="reset-anchor" href="#!">Shavers</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="#!">bags</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="#!">Cosmetic</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="#!">Nail Art</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="#!">Skin Masks &amp; Peels</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="#!">Korean cosmetics</a></li>
-                </ul>
-                <div class="py-2 px-4 bg-light mb-3"><strong class="small text-uppercase fw-bold">Electronics</strong></div>
-                <ul class="list-unstyled small text-muted ps-lg-4 font-weight-normal mb-5">
-                  <li class="mb-2"><a class="reset-anchor" href="#!">Electronics</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="#!">USB Flash drives</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="#!">Headphones</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="#!">Portable speakers</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="#!">Cell Phone bluetooth headsets</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="#!">Keyboards</a></li>
-                </ul>
               </div>
               <!-- SHOP LISTING-->
               <div class="col-lg-9 order-1 order-lg-2 mb-5 mb-lg-0">
                 <div class="row mb-3 align-items-center">
                   <div class="col-lg-6 mb-2 mb-lg-0">
-                    <p class="text-sm text-muted mb-0">Showing 1–12 of 53 results</p>
+                    <p class="text-sm text-muted mb-0">Showing 1–3 of 53 results</p>
                   </div>
                   <div class="col-lg-6">
                     <ul class="list-inline d-flex align-items-center justify-content-lg-end mb-0">
@@ -148,9 +130,6 @@
                     {{-- @endif --}}
                 @endforeach
               </div>
-                <!-- PAGINATION-->
-                <!-- Add your product listing HTML here -->
-
                     <!-- PAGINATION-->
             <div class="row">
                 <div class="col-lg-12">

@@ -37,6 +37,7 @@
                                         <th scope="col">Description</th>
                                         <th scope="col">URL</th>
                                         <th scope="col">Status</th>
+                                        <th scope="col">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -51,11 +52,18 @@
                                                 No Parent Category
                                             @endif
                                         </td>
-                                        <td>{{ $category->category_image }}</td>
+                                        <td>
+                                            <img src="{{asset($category->category_image)}}" alt="nf" style="width:100px;height:100px;">
+                                        </td>
                                         <td>{{ $category->category_discount }}</td>
                                         <td>{{ $category->description }}</td>
                                         <td>{{ $category->url }}</td>
                                         <td>{{ $category->status }}</td>
+                                        <td>
+                                            <a href="{{route('category.delete',$category->category_id)}}"> <button class="btn btn-danger">Delete</button></a>
+
+                                          <a href="{{route('category.edit',$category->category_id)}}"> <button class="btn btn-primary">Edit</button>
+                                        </td>
                                     </tr>
                                     @endforeach
                                 </tbody>

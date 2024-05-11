@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Products;
 use App\Models\Carts;
-use App\Models\wishlist;
+use App\Models\Category;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -17,6 +17,8 @@ class HomeController extends Controller
         $products = Products::all();
         $userId = Auth::id();
         $cartItemsCount = Carts::where('user_id', $userId)->count();
-        return view('web.Boutique.index',compact('products','cartItemsCount'));
+        $parentCategories = Category::where('parent_id', '!=', 0)->get();
+
+        return view('web.Boutique.index',compact('products','cartItemsCount','parentCategories'));
     }
 }

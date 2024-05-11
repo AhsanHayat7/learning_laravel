@@ -63,12 +63,14 @@
             <h2 class="h5 text-uppercase mb-4">Browse our categories</h2>
         </header>
         <div class="row">
-            <div class="col-md-4"><a class="category-item" href="{{url('/shop')}}"><img class="img-fluid" src="{{url('web/img/cat-img-1.jpg')}}" alt=""/><strong class="category-item-title">Clothes</strong></a>
-            </div>
-            <div class="col-md-4"><a class="category-item mb-4" href="{{url('/shop')}}"><img class="img-fluid" src="{{url('web/img/cat-img-2.jpg')}}" alt=""/><strong class="category-item-title">Shoes</strong></a><a class="category-item" href="{{url('/shop')}}"><img class="img-fluid" src="{{url('web/img/cat-img-3.jpg')}}" alt=""/><strong class="category-item-title">Watches</strong></a>
-            </div>
-            <div class="col-md-4"><a class="category-item" href="{{url('/shop')}}"><img class="img-fluid" src="{{url('web/img/cat-img-4.jpg')}}" alt=""/><strong class="category-item-title">Electronics</strong></a>
-            </div>
+            @foreach($parentCategories as $category)
+                <div class="col-md-4">
+                    <a class="category-item" href="{{ url('/shop') }}">
+                        <img class="img-fluid" src="{{ asset($category->category_image) }}" alt="{{ $category->CategoryName }}" />
+                        <strong class="category-item-title">{{ $category->CategoryName }}</strong>
+                    </a>
+                </div>
+            @endforeach
         </div>
     </section>
 

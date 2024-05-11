@@ -5,16 +5,18 @@ namespace App\Http\Controllers\frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
     //
     public function add()
-    {    $getCategories = Category::getCategories();
-       $categories = Category::all();
-        return view('frontend.dashboard.categories.category', compact('categories','getCategories'));
+    {
+        $getCategories = Category::getCategories();
+        $categories = Category::all();
+        $category = new Category();
+        return view('frontend.dashboard.categories.category', compact('categories', 'getCategories','category'));
     }
-
     public function store(Request $request)
     {
         $request->validate([
@@ -33,8 +35,12 @@ class CategoryController extends Controller
                $category->parent_id = $request->input('parent_id');
                // Handle file upload for category_image if needed
                if ($request->hasFile('category_image')) {
-                   $category->category_image = $request->file('category_image')->store('category_images');
-               }
+                $file = $request->file('category_image');
+                $filename = Str::slug($request->input('CategoryName')) . rand(00000, 99999) . '.' . $file->getClientOriginalExtension();
+                $imagePath = 'uploads/';
+                $file->move(public_path($imagePath), $filename);
+                $category->category_image = $imagePath . $filename;
+            }
                $category->category_discount = $request->input('category_discount');
                $category->description = $request->input('description');
                $category->url = $request->input('url');
@@ -46,6 +52,21 @@ class CategoryController extends Controller
                // Redirect back with success message
                return redirect()->route('product.category')->with('success', 'Category added successfully.');
            }
+
+
+           public function delete($id)
+           {
+               $Category = Category ::find($id)->delete();
+               return redirect()->route('product.category');
+           }
+
+           public function edit($id)
+           {   $getCategories = Category::getCategories();
+               $category = Category ::find($id);
+
+               return view('frontend.dashboard.categories.category', compact('category','getCategories'));
+           }
+
 
            public function view(){
 

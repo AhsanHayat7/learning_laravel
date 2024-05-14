@@ -48,4 +48,7 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Products::class, 'wishlist', 'user_id', 'product_id')->withTimestamps();
     }
+
+
+    
 }

@@ -26,7 +26,7 @@ use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\frontend\ProductDetailController;
 use App\Http\Controllers\frontend\ShopController;
 use App\Http\Controllers\frontend\DetailController;
-use App\Http\Controllers\frontend\OrderController;
+use App\Http\Controllers\frontend\CmsController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -161,3 +161,8 @@ Route::post('/wishlist/add', [WishlistController::class, 'addToWishlist'])->name
 Route::delete('/wishlist/remove/{wishlist}', [WishlistController::class, 'removeFromWishlist'])->name('wishlist.remove');
 
 Route::get('/wishlist',[WishlistController::class, 'wishlist'])->name('wishlist');
+
+// control management system
+
+Route::get('/Cms',[CmsController::class,'cms'])->name('cms');
+Route::post('/Cms',[CmsController::class,'store'])->name('cms.store');

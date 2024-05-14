@@ -45,17 +45,32 @@
     </div>
 </div>
 <!-- HERO SECTION-->
-<div class="container">
-    <section class="hero pb-3 bg-cover bg-center d-flex align-items-center" style="background: url('{{ url('web/img/hero-banner-alt.jpg') }}')">
+@forelse($cms as $cm)
+<section class="hero pb-3 bg-cover bg-center d-flex align-items-center" style="background: url('{{ asset($cm->Image) }}')">
+    <div class="container py-5">
+        <div class="row px-4 px-lg-5">
+            <div class="col-lg-6">
+                <p class="text-muted small text-uppercase mb-2">{{$cm->Header ?? ''}}</p>
+                <h1 class="h2 text-uppercase mb-3">{{$cm->title ?? ''}}</h1>
+                <a class="btn btn-dark" href="{{url('/shop')}}">Browse collections</a>
+            </div>
+        </div>
+    </div>
+</section>
+@empty
+    <section class="hero pb-3 bg-cover bg-center d-flex align-items-center">
         <div class="container py-5">
             <div class="row px-4 px-lg-5">
-                <div class="col-lg-6">
-                    <p class="text-muted small text-uppercase mb-2">New Inspiration 2020</p>
-                    <h1 class="h2 text-uppercase mb-3">20% off on new season</h1><a class="btn btn-dark" href="{{url('/shop')}}">Browse collections</a>
+                <div class="col-lg-12">
+                    <p>No CMS content available</p>
                 </div>
             </div>
         </div>
     </section>
+    @endforelse
+    </div>
+</div>
+</section>
     <!-- CATEGORIES SECTION-->
     <section class="pt-5">
         <header class="text-center">
@@ -121,32 +136,46 @@
     <section class="py-5 bg-light">
         <div class="container">
             <div class="row text-center gy-3">
-                <div class="col-lg-4">
-                    <div class="d-inline-block">
-                        <div class="d-flex align-items-end">
-                            <svg class="svg-icon svg-icon-big svg-icon-light">
-                                <use xlink:href="#delivery-time-1"> </use>
-                            </svg>
-                            <div class="text-start ms-3">
-                                <h6 class="text-uppercase mb-1">Free shipping</h6>
-                                <p class="text-sm mb-0 text-muted">Free shipping worldwide</p>
+                @forelse($cms as $cm)
+                    <div class="col-lg-4">
+                        <div class="d-inline-block">
+                            <div class="d-flex align-items-end">
+                                <svg class="svg-icon svg-icon-big svg-icon-light">
+                                    <use xlink:href="#delivery-time-1"></use>
+                                </svg>
+                                <div class="text-start ms-3">
+                                    <h6 class="text-uppercase mb-1">{{ $cm->Header_1 ?? '' }}</h6>
+                                    <p class="text-sm mb-0 text-muted">{{ $cm->Description_1 ?? '' }}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="d-inline-block">
-                        <div class="d-flex align-items-end">
-                            <svg class="svg-icon svg-icon-big svg-icon-light">
-                                <use xlink:href="#helpline-24h-1"> </use>
-                            </svg>
-                            <div class="text-start ms-3">
-                                <h6 class="text-uppercase mb-1">24 x 7 service</h6>
-                                <p class="text-sm mb-0 text-muted">Free shipping worldwide</p>
+                @empty
+                    <div class="col-lg-12">
+                        <p>No dynamic items available</p>
+                    </div>
+                @endforelse
+
+                @forelse($cms as $cm)
+                    <div class="col-lg-4">
+                        <div class="d-inline-block">
+                            <div class="d-flex align-items-end">
+                                <svg class="svg-icon svg-icon-big svg-icon-light">
+                                    <use xlink:href="#helpline-24h-1"></use>
+                                </svg>
+                                <div class="text-start ms-3">
+                                    <h6 class="text-uppercase mb-1">{{ $cm->Header_2 ?? '' }}</h6>
+                                    <p class="text-sm mb-0 text-muted">{{ $cm->Description_2 ?? '' }}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @empty
+                    <div class="col-lg-12">
+                        <p>No dynamic items available</p>
+                    </div>
+                @endforelse
+
                 <div class="col-lg-4">
                     <div class="d-inline-block">
                         <div class="d-flex align-items-end">

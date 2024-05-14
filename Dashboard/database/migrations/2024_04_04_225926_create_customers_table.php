@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id('Customer_id');
             $table->string('Name', 60);
             $table->string('Position', 100);
-            $table->integer('Age', 100);
+            $table->integer('Age');
             $table->date('Start_Date');
             $table->timestamps();
         });

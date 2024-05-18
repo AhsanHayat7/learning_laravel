@@ -5,11 +5,31 @@ use Illuminate\Support\Facades\Route;
 
 // Routes
 
+// Basic Routing
+
 Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+    return view('index');
+});
 
+Route::get('/Aboutt', function () {
+    return view('Aboutt');
+});
 
+Route::get('/services', function () {
+    return view('services');
+});
+
+Route::get('/portfolio', function () {
+    return view('portfolio');
+});
+
+Route::get('/pricing', function () {
+    return view('pricing');
+});
+
+Route::get('/contact', function () {
+    return view('contact');
+});
 //Route::get('/about', function(){
 //    return view('about');
 //});
@@ -52,7 +72,7 @@ Route::get('/post/here/want/lala', function(){
 
 
 
-
+// Routing and constraints
 
 Route::get('/post/{id}/comment/{commentid}', function (string $id =null ,$comment = null ){
 
@@ -114,7 +134,39 @@ Route::prefix('Page')->group(function(){
     });
 });
 
-
 Route::fallback(function(){
-    return "<h1>Page not found <h2>.";
+    return "<h1> Page Not found.<h2>";
+});
+
+
+
+Route::get('/post/{id?}/name/{nameid?}', function(string $id = null ,string $nameid = null){
+
+    if($id){
+        return "<h1> Post id:" . $id . "</h1><h2>" . $nameid ."</h2>";
+    }else{
+        return "<h2> Post Id not found";
+    }
+
+});
+
+
+
+Route::prefix('admin')->group(function (){
+
+    Route::get('/form', function (){
+        return view('gallery');
+    });
+
+    Route::get('/register', function(){
+        return view('about');
+    });
+    Route::get('/dashboard/table', function(){
+        return view('firstpost');
+    });
+});
+
+
+Route::get('/second', function(){
+    return view('second');
 });

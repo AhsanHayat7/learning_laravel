@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\PagesController;
+use App\Http\Controllers\TestingController;
 
 // Routes
 
@@ -170,3 +171,55 @@ Route::prefix('admin')->group(function (){
 Route::get('/second', function(){
     return view('second');
 });
+
+
+
+// Js in blade template
+
+Route::get('/test', function(){
+    return view('test');
+});
+
+// arrays
+// varailbles
+Route::get('/users',function(){
+    $web = "laravel framework";
+    $languages = "";
+    $names = getUser();
+    //$names = [1=>['name'=>'LAla','phone'=>'1313213','city'=>'karachi'],
+              //2=>['name'=>'Maksan','phone'=>'9088231','city'=>'Lahore'],
+              //3=>['name'=>'Raja','phone'=>'532222','city'=>'Islamabad'],
+              //4=>['name'=>'shubh','phone'=>'914214','city'=>'Peshawar'], ];
+    //$msg="<script>alert('Php laravel')</script>";
+    $Alert="<script>alert('Php laravel')</script>";
+    return view('users', ['user'=> $web, 'lang'=> $languages,'Alert'=> "<script>alert('Php laravel')</script>", 'info'=>$names]);
+
+    //return view('users')->with('user', $web)->with('lang',$languages)->with('Alert',$msg);
+    //return view('users')->withuser($web)->withlang($languages)->withAlert($Alert);
+});
+
+Route::get('/user/{id}',function($id){
+    $users = getUser();
+    abort_if(!isset($users[$id]),404);
+    $user = $users[$id];
+
+    return  view('user', ['id'=>$user]);
+})->name('user');
+
+
+function getUser(){
+
+ return $names = [1=>['name'=>'LAla','phone'=>'1313213','city'=>'karachi'],
+              2=>['name'=>'Maksan','phone'=>'9088231','city'=>'Lahore'],
+              3=>['name'=>'Raja','phone'=>'532222','city'=>'Islamabad'],
+              4=>['name'=>'shubh','phone'=>'914214','city'=>'Peshawar'], ];
+};
+// controllers
+Route::controller(PagesController::class)->group(function(){
+    Route::get('/show', 'Showusers')->name('show');
+    Route::get('/show/{id}','Showusers');
+    Route::get('/blog','showblog')->name('blog');
+    Route::get('/detail','showdetail')->name('detail');
+});
+
+Route::get('/test',TestingController::class);

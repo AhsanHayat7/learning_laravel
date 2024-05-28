@@ -1,16 +1,16 @@
 @extends('todos.layouts.app')
 
 @section('main-container')
-<div class="mt-4">
-    <h1>Edit To-do</h1>
+    <div id="myDIV" class="header">
+        <h2>Edit Todo</h2>
+    </div>
 
     <form action="{{ route('todos.update', $todo->id) }}" method="POST">
         @csrf
         @method('PUT')
-        <div class="form-group">
-            <input type="text" name="title" class="form-control" value="{{ $todo->title }}">
-        </div>
-        <button type="submit" class="btn btn-primary">Update</button>
+        <input type="text" name="title" value="{{ $todo->title }}">
+        <button type="submit">Update</button>
     </form>
-</div>
+
+    <a href="{{ route('todos.index') }}">Back to list</a>
 @endsection

@@ -14,8 +14,12 @@ class TodoController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate(['title' => 'required']);
-        Todo::create($request->all());
+        $request->validate([
+            'title' => 'required|string|max:255',
+        ]);
+
+        Todo::create($request->only('title'));
+
         return redirect()->route('todos.index');
     }
 
@@ -26,14 +30,19 @@ class TodoController extends Controller
 
     public function update(Request $request, Todo $todo)
     {
-        $request->validate(['title' => 'required']);
-        $todo->update($request->all());
+        $request->validate([
+            'title' => 'required|string|max:255',
+        ]);
+
+        $todo->update($request->only('title'));
+
         return redirect()->route('todos.index');
     }
 
     public function destroy(Todo $todo)
     {
         $todo->delete();
+
         return redirect()->route('todos.index');
     }
 }

@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard;
+namespace App\Http\Controllers\dashboard;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 class AuthController extends Controller
 {
-    //
+
     public function log(){
-        return view('dashboard.login');
+        return view('web.login');
     }
 
     public function login(Request $request){
@@ -21,7 +21,7 @@ class AuthController extends Controller
 
         if(\Auth::attempt($request->only('email','password'))){
 
-            return redirect('classic');
+            return redirect('/');
         }
         return redirect('login')->withError('Login details are not valid');
 
@@ -31,7 +31,7 @@ class AuthController extends Controller
 
 
     public function reg(){
-        return view('dashboard.register');
+        return view('web.register');
     }
 
     public function register(Request $request){
@@ -50,7 +50,7 @@ class AuthController extends Controller
 
         if(\Auth::attempt($request->only('email','password'))){
 
-            return redirect('classic');
+            return redirect('/');
         }
         return redirect('register')->withError('Error');
 
@@ -62,5 +62,7 @@ class AuthController extends Controller
         return redirect('');
 
     }
+
+
 
 }

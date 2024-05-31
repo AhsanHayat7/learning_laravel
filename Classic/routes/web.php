@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\dashboard\DashboardController;
 use App\Http\Controllers\dashboard\AuthController;
 use App\Http\Controllers\dashboard\BlogController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,18 +17,21 @@ use App\Http\Controllers\dashboard\BlogController;
 |
 */
 
+Route::get('/', function () {
+    return view('welcome');
+});
 
 
 // website
 
-Route::get('/classic',[WebController::class, 'web'])->name('classic');
+Route::get('/',[WebController::class, 'index'])->name('web');
 Route::get('/aboutpage',[WebController::class, 'about'])->name('about');
 Route::get('/contactpage',[WebController::class, 'contact'])->name('contact');
 Route::get('/blogpage',[WebController::class, 'blog'])->name('blog');
 
 // dashboard
 
-Route::get('/',[DashboardController::class, 'index'])->name('dashboard');
+//Route::get('/admin',[DashboardController::class, 'admin'])->name('dashboard');
 Route::get('/charts',[DashboardController::class, 'charts'])->name('charts');
 Route::get('/tables',[DashboardController::class, 'tables'])->name('tables');
 Route::get('/forms',[DashboardController::class, 'forms'])->name('forms');
@@ -48,22 +52,28 @@ Route::get('/grid',[DashboardController::class, 'grid'])->name('grid');
 Route::get('/fontawesome',[DashboardController::class, 'font'])->name('font');
 Route::get('/typo',[DashboardController::class, 'typo'])->name('typo');
 
+
+Route::get('/admin/manage-blog', [BlogController::class, 'blog'])->name('manage-blog');
+
 //login and registration
 
 //login and register
-Route::middleware('guest')->group(function () {
-    Route::get('login', [AuthController::class, 'log'])->name('login');
-    Route::post('login', [AuthController::class, 'login']);
-    Route::get('register', [AuthController::class, 'registerForm'])->name('register');
-    Route::post('register', [AuthController::class, 'register']);
+
+Route::group(['middleware'=>'guest'],function(){
+    Route::get('/login',[AuthController::class, 'log'])->name('login');
+    Route::post('/login',[AuthController::class, 'login'])->name('login');
+
+    Route::get('/register',[AuthController::class, 'reg'])->name('register');
+    Route::post('/register',[AuthController::class, 'register'])->name('register');
+
 });
+
 Route::group(['middleware'=>'auth'],function(){
     Route::get('/logout',[AuthController::class, 'logout'])->name('logout');
-    Route::get('/',[DashboardController::class, 'index']);
+    Route::get('/admin',[DashboardController::class, 'admin'])->name('dashboard');
 });
 
-//Blog management
-
+// Blog Management
 Route::get('/Blog',[BlogController::class,'blog'])->name('manage-blog');
 Route::get('/blogs/create', [BlogController::class, 'create'])->name('create');
 Route::post('/dashboard/blogs', [BlogController::class, 'store'])->name('store');

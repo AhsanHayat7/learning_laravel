@@ -1,4 +1,3 @@
-
 @extends('dashboard.layouts.app')
 @section('main-container')
 

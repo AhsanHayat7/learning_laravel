@@ -1,14 +1,14 @@
 <aside class="menu-sidebar d-none d-lg-block">
     <div class="logo">
-        <a href="{{ route('classic') }}">
+        <a href="{{ route('dashboard') }}">
             <img src="{{ asset('dashboard/images/icon/logo.png') }}" alt="Cool Admin" />
         </a>
     </div>
     <div class="menu-sidebar__content js-scrollbar1">
         <nav class="navbar-sidebar">
             <ul class="list-unstyled navbar__list">
-                <li class="{{ Request::routeIs('classic*') ? 'active' : '' }}">
-                    <a href="{{ route('classic') }}">
+                <li class="{{ Request::routeIs('dashboard*') ? 'active' : '' }}">
+                    <a href="{{ route('dashboard') }}">
                         <i class="fas fa-tachometer-alt"></i>Dashboard
                     </a>
                 </li>
@@ -18,22 +18,11 @@
                         <i class="fas fa-tachometer-alt"></i>Blog Management
                     </a>
                 </li>
-                <li class="has-sub {{ Request::routeIs(['login*', 'register*', 'forget*']) ? 'active' : '' }}">
-                    <a class="js-arrow" href="#">
-                        <i class="fas fa-copy"></i>Pages</a>
-                    <ul class="list-unstyled navbar__sub-list js-sub-list">
-                        <li class="{{ Request::routeIs('login*') ? 'active' : '' }}">
-                            <a href="{{ route('login') }}">Login</a>
-                        </li>
-                        <li class="{{ Request::routeIs('register*') ? 'active' : '' }}">
-                            <a href="{{ route('register') }}">Register</a>
-                        </li>
-                        <li class="{{ Request::routeIs('forget*') ? 'active' : '' }}">
-                            <a href="{{ route('forget') }}">Forget Password</a>
-                        </li>
-                    </ul>
+                <li class="{{ Request::routeIs('web*') ? 'active' : '' }}">
+                    <a href="{{ route('web') }}">
+                        <i class="fas fa-tachometer-alt"></i>Classic Website
+                    </a>
                 </li>
-
                 {{-- <li class="{{ Request::routeIs('classic*') ? 'active' : '' }}">
                     <a href="{{ route('classic') }}">
                         <i class="fas fa-tachometer-alt"></i>Dashboard
@@ -116,8 +105,8 @@
                         <li class="{{ Request::routeIs('typo*') ? 'active' : '' }}">
                             <a href="{{ route('typo') }}">Typography</a>
                         </li>
-                    </ul>
-                </li> --}}
+                    </ul>--}}
+                </li> 
             </ul>
         </nav>
     </div>

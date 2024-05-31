@@ -11,8 +11,8 @@
 
                 <div class="collapse navbar-toggleable-sm" id="tmNavbar">
                     <ul class="nav navbar-nav">
-                        <li class="nav-item {{ Route::currentRouteName() == 'classic' ? 'active' : '' }}">
-                            <a href="{{ route('classic') }}" class="nav-link">Home</a>
+                        <li class="nav-item {{ Route::currentRouteName() == 'web' ? 'active' : '' }}">
+                            <a href="{{ route('web') }}" class="nav-link">Home</a>
                         </li>
                         <li class="nav-item {{ Route::currentRouteName() == 'about' ? 'active' : '' }}">
                             <a href="{{ route('about') }}" class="nav-link">About</a>
@@ -23,15 +23,15 @@
                         <li class="nav-item {{ Route::currentRouteName() == 'contact' ? 'active' : '' }}">
                             <a href="{{ route('contact') }}" class="nav-link">Contact</a>
                         </li>
-                        <li class="nav-item {{ Route::currentRouteName() == 'login' ? 'active' : '' }}">
-                            <a href="{{ route('login') }}" class="nav-link">Login</a>
-                        </li>
-                        <li class="nav-item {{ Route::currentRouteName() == 'register' ? 'active' : '' }}">
-                            <a href="{{ route('register') }}" class="nav-link">Register</a>
-                        </li>
-                        <li class="nav-item {{ Route::currentRouteName() == 'logout' ? 'active' : '' }}">
-                            <a href="{{ route('logout') }}" class="nav-link">Logout</a>
-                        </li>
+                        @if (Route::has('login'))
+                            @auth
+                                <li class="nav-item"><a class="nav-link" href="{{url('/admin')}}"> <i class="fas fa-user me-1 text-gray fw-normal"></i>DashBoard</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ route('logout') }}"> <i class="fas fa-user me-1 text-gray fw-normal"></i>Log out</a></li>
+                            @else
+                                <li class="nav-item"><a class="nav-link" href="{{url('/login')}}"> <i class="fas fa-user me-1 text-gray fw-normal"></i>Login</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{url('/register')}}"> <i class="fas fa-user me-1 text-gray fw-normal"></i>Register</a></li>
+                            @endauth
+                        @endif
                     </ul>
                 </div>
             </nav>

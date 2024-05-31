@@ -5,20 +5,23 @@ namespace App\Http\Controllers\web;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Blogs;
 class WebController extends Controller
 {
     //
-    public function web(){
-        $userId = Auth::id();
-        return view('web.index');
+    public function index(){
+        $blogs = blogs::all();
+        return view('web.index',compact('blogs'));
     }
 
     public function about(){
-        return view('web.about');
+        $blogs = blogs::all();
+        return view('web.about',compact('blogs'));
     }
 
     public function blog(){
-        return view('web.blog');
+        $blogs = blogs::all();
+        return view('web.blog',compact('blogs'));
     }
 
     public function contact(){

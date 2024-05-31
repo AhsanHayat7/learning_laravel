@@ -14,14 +14,14 @@
     @include('dashboard.layouts.styles')
 </head>
 <body>
-    @include('dashboard.layouts.navigation')
+    <div class="page-wrapper">
     @include('dashboard.layouts.header')
     @include('dashboard.layouts.sidebar')
 
-    @yield("main-container")
+    @yield('main-container')
 
-    
 
+    </div>
     @include('dashboard.layouts.scripts')
 
 </body>

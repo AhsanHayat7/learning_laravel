@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<body>
+    <header>
+
+    </header>
+
+    <main>
+        <h4>Registration Form</h4>
+        <form action="/action.php">
+            
+            <input type="text" placeholder="User Name">
+            <br><br>
+            <input type="password" placeholder="Password">
+            <br><br>
+            <h3>Select Your Class</h3>
+            <label for="101">
+            <input type="radio" value="XI" name="Class" id="101">Class XI
+            </label>
+            <br><br>
+            <label for="102">
+            <input type="radio" value="XII" name="Class" id="102">Class XII
+            </label>
+            <br><br>
+            <h3>Select your Subjects</h3>
+            <br><br>
+            <label for="Maths">
+                <input type="checkbox" value="Maths" name="subjects" id="101">Maths
+            </label>
+            <br><br>
+            <label for="Chemistry">
+                <input type="checkbox" value="Chemistry" name="subjects" id="102">Chemistry
+            </label>
+            <br><br>
+            <label for="Physcis">
+                <input type="checkbox" value="Physcis" name="subjects" id="103">Physcis
+            </label>
+            <br><br>
+            <label for="English">
+                <input type="checkbox" value="English" name="subjects" id="104">English
+            </label>
+            <br><br>
+            Select your City
+            <select name="city">
+                <option value="Karachi">Karachi</option>
+                <option value="Hyderabad">Hyderabad</option>
+                <option value="Shukkur">Shukkur</option>
+                <option value="Larkana">Larkana</option>
+            </select>
+            <br><br>
+            <textarea name="Feedback" id="105" placeholder="Please give your valuable Feedback here" rows=5>Feedback</textarea>
+            <br><br>
+            <input type="submit" value="submit">
+        </form>
+    </main>
+
+    <footer>
+
+    </footer>
+</body>
+</html>

@@ -1,0 +1,29 @@
+div{
+    height:100px;
+    background-color: pink;
+    width: 100px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: brown;
+    border-radius: 20px;
+    padding: 25px;
+    margin: 25px;
+}
+
+
+h1{
+    width: 200px;
+    height: 50px;
+    background-color: aquamarine;
+    /* border-width: 2px;
+    border-style: dashed;
+    border-color: black; */
+    border: 2px,dashed,black;
+    text-align: center;
+}
+
+h2{
+    border: 2px,solid,green;
+    background-color: green;
+    text-align: center;
+}

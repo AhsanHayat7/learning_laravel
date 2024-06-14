@@ -1,0 +1,48 @@
+#one{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 250px;
+    width: 150px;
+    background-color: black;
+    margin: 50px auto; /* Center horizontally */
+    padding: 20px; /* Add padding for spacing */
+}
+    
+
+
+
+#two{
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    margin:  10px ; 
+    background-color: green;
+   
+}
+
+
+#three{
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    margin: 10px ; 
+    background-color: orange;
+}
+
+
+#four{
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    margin: 10px ; 
+    background-color: red;
+}
+
+header{
+    text-align: center;
+    text-decoration: bolder;
+    font-weight: bolder;
+    font-size: 40px;
+}

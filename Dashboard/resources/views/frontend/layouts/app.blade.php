@@ -10,7 +10,7 @@
   </title>
   <meta content="" name="description">
   <meta content="" name="keywords">
-    
+
     @include('frontend.layouts.style')
 </head>
 <body>

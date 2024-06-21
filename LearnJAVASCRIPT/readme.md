@@ -50,7 +50,7 @@ Variables are used to store data values. You can declare variables using `var`, 
 ```javascript
 let name = "John";
 const age = 30;
-var isStudent = true;
+var isStudent = true;```
 
 
 # JavaScript Data Types and Operators

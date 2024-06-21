@@ -50,8 +50,8 @@ Variables are used to store data values. You can declare variables using `var`, 
 ```javascript
 let name = "John";
 const age = 30;
-var isStudent = true;```
-
+var isStudent = true;
+```
 
 # JavaScript Data Types and Operators
 
@@ -86,6 +86,7 @@ let andOp = (a < b && b > 15);  // true
 
 // Assignment
 a += b;  // a = 30
+```
 
 
 # Control Structures in JavaScript
@@ -104,6 +105,7 @@ if (age < 18) {
 } else {
   console.log("You are an adult.");
 }
+```
 
 
 # Loops in JavaScript
@@ -114,6 +116,7 @@ Loops allow you to execute code repeatedly.
 for (let i = 0; i < 5; i++) {
   console.log(i);
 }
+```
 
 
 # Functions in JavaScript
@@ -126,6 +129,7 @@ function greet(name) {
 }
 
 console.log(greet("Alice"));  // Hello, Alice!
+```
 
 
 # Objects in JavaScript
@@ -144,7 +148,7 @@ let person = {
 
 console.log(person.fullName());  // John Doe
 
-
+```
 # Events in JavaScript
 
 JavaScript can react to user actions such as clicks, form submissions, and keyboard inputs.
@@ -164,7 +168,7 @@ function displayMessage() {
 
 </body>
 </html>
-
+```
 # Conclusion
 
 JavaScript is a powerful and essential language for web development, enabling dynamic and interactive experiences. Understanding the basics of JavaScript provides a foundation for building more complex and feature-rich web applications.

@@ -53,6 +53,7 @@ const age = 30;
 var isStudent = true;
 
 
+
 # JavaScript Data Types and Operators
 
 ## Data Types

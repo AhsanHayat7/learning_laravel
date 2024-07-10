@@ -69,7 +69,7 @@
                                         <td>{{ $product->category_id }}</td>
                                         <td>
                                             <a data-fancybox="product-images" href="{{ asset($product->Image) }}">
-                                                <img src="{{ asset($product->Image) }}" alt="Product Image" style="max-width: 100px;">
+                                                <img src="{{ asset($product->Image) }}" alt="Product Image" style="max-width: 150px;">
                                             </a>
                                         </td>
                                         <td>{{ $product->Description }}</td>

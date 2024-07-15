@@ -1,0 +1,44 @@
+Setting Up Frontend Structure in Laravel with PHP
+
+Folder Structure:
+
+1. Create a frontend folder in resources/views/.
+2. Move index.blade.php and other blade files to the frontend folder.
+3. Create a frontend folder in the public directory.
+4. Move assets (CSS, JS, images) to the frontend folder within public.
+
+Layouts:
+
+1. Create a layouts folder within the frontend directory.
+2. Create app.blade.php, scripts.blade.php, style.blade.php, header.blade.php, footer.blade.php, and main.blade.php.
+3. Copy relevant code sections from index.blade.php into corresponding layout files.
+4. In main.blade.php, include the header and footer, and yield the main container.
+
+Controllers:
+
+1. Create controllers corresponding to website pages (e.g., home, about, contact, services, portfolio).
+2. Define functions in controllers corresponding to routes in web.php.
+3. In controller functions, return views located in resources/views/frontend folder.
+
+Routes:
+
+1. Include controllers in web.php (e.g., App\Http\Controllers\Frontend\HomeController).
+2. Define GET routes with controllers to view web pages.
+3. Use URLs defined in web.php in header, index.blade.php, and other blade files.
+4. Define URLs and folder directories for assets in footer, style, scripts, and other blade files.
+
+index.blade.php:
+
+1. Extract header, footer, scripts, and styles code to layout files.
+2. Remove header, footer, scripts, and styles code from index.blade.php.
+3. Utilize the main container to include header and footer across pages using @extends('frontend.layouts.app) and @section('main-container).
+
+Blade Files:
+
+1. Use blade files provided by the website or create new ones based on index.blade.php.
+2. Create blade files such as about.blade.php, contact.blade.php, etc.
+
+Final Steps:
+
+1. Refer to index.blade.php for code selection and removal based on commented lines.
+2. Run php artisan serve command for local server deployment.

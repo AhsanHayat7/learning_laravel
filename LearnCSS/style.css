@@ -1,0 +1,64 @@
+/* h1{
+    color:red
+}
+
+p{
+    color:blue
+}
+
+button{
+    color:brown;
+    background-color: green;
+} */
+
+/* body{
+    background-color:rgb(208,108,237)
+} */
+
+
+/* body{
+    background-color: #75B8C8;
+} */
+
+*{
+    color:black
+}
+
+h1{
+    color:brown
+}
+
+button{
+    background-color:green
+}
+
+
+#Heading1{
+    color:red
+}
+
+#Heading2{
+    color:green
+}
+
+
+#Heading3{
+    color:orange
+}
+
+#b{
+    color:purple
+}
+
+.myclass{
+    color:rgb(76, 0, 255)
+}
+
+
+#box{
+    background-color: blue;
+}
+
+#heading{
+    color:red
+}

@@ -1,0 +1,43 @@
+h1{
+    color : blue;
+    background: rgb(255, 172, 47);
+    text-align: center;
+}
+
+
+body{
+    background-color: grey;
+}
+
+button {
+    background-color: black;
+    color: red;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    display: block; /* Make it block to use margin auto */
+    margin: 20px auto;
+    user-select: text; /* Center horizontally and add some vertical space */
+}
+
+/* #heading{
+
+} */
+
+.heading-class{
+    color : blue;
+    background: rgb(255, 172, 47);
+    text-align: center;
+
+}
+
+.box{
+    height: 100px;
+    width: 100px;
+    border : 1px solid black;
+    margin: 5px;
+    text-align: center;
+    background-color: aquamarine;
+}

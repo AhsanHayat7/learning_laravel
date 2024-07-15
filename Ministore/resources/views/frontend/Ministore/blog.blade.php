@@ -1,0 +1,45 @@
+@extends('frontend.layouts.app')
+@section('main-container')
+
+<section id="testimonials" class="position-relative">
+    <div class="container">
+      <div class="row">
+        <div class="review-content position-relative">
+          <div class="swiper-icon swiper-arrow swiper-arrow-prev position-absolute d-flex align-items-center">
+            <svg class="chevron-left">
+              <use xlink:href="#chevron-left" />
+            </svg>
+          </div>
+          <div class="swiper testimonial-swiper">
+            <div class="quotation text-center">
+              <svg class="quote">
+                <use xlink:href="#quote" />
+              </svg>
+            </div>
+            <div class="swiper-wrapper">
+              <div class="swiper-slide text-center d-flex justify-content-center">
+                <div class="review-item col-md-10">
+                  <i class="icon icon-review"></i>
+                  <blockquote>“Tempus oncu enim pellen tesque este pretium in neque, elit morbi sagittis lorem habi mattis Pellen tesque pretium feugiat vel morbi suspen dise sagittis lorem habi tasse morbi.”</blockquote>
+                  <div class="rating">
+                    <svg class="star star-fill">
+                      <use xlink:href="#star-fill"></use>
+                    </svg>
+                    <svg class="star star-fill">
+                      <use xlink:href="#star-fill"></use>
+                    </svg>
+                    <svg class="star star-fill">
+                      <use xlink:href="#star-fill"></use>
+                    </svg>
+                    <svg class="star star-half">
+                      <use xlink:href="#star-half"></use>
+                    </svg>
+                    <svg class="star star-empty">
+                      <use xlink:href="#star-empty"></use>
+                    </svg>
+                </div>
+            </div>
+        </div>
+     </div>
+</section>
+@endsection
